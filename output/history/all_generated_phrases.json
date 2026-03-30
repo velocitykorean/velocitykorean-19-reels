@@ -449,7 +449,37 @@
       "korean": "말했지. 수고했어.",
       "category": "Numbers Korean",
       "generated_at": "2026-03-30T19:45:01.313413"
+    },
+    {
+      "english": "Order with a smile, please.",
+      "korean": "웃으며 주문하세요, 부탁해요.",
+      "category": "Restaurant Korean",
+      "generated_at": "2026-03-30T20:03:51.245207"
+    },
+    {
+      "english": "Delicious, more. Serve next.",
+      "korean": "맛있어요, 더. 다음 주세요.",
+      "category": "Restaurant Korean",
+      "generated_at": "2026-03-30T20:03:51.245219"
+    },
+    {
+      "english": "Excuse me, where's the restroom?",
+      "korean": "저기요, 화장실 어디인가요?",
+      "category": "Restaurant Korean",
+      "generated_at": "2026-03-30T20:03:51.245221"
+    },
+    {
+      "english": "This food, how to eat?",
+      "korean": "이 음식, 어떻게 먹어요?",
+      "category": "Restaurant Korean",
+      "generated_at": "2026-03-30T20:03:51.245222"
+    },
+    {
+      "english": "Can I have the bill, quickly?",
+      "korean": "이거 빨리 계산해 줄 수 있어요?",
+      "category": "Restaurant Korean",
+      "generated_at": "2026-03-30T20:03:51.245223"
     }
   ],
-  "last_updated": "2026-03-30T19:45:01.313415"
+  "last_updated": "2026-03-30T20:03:51.245225"
 }
