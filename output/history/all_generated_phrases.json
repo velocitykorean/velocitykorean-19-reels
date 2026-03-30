@@ -89,7 +89,37 @@
       "korean": "잠재력 열어요, 지금 바로.",
       "category": "Strength",
       "generated_at": "2026-03-30T07:08:16.524053"
+    },
+    {
+      "english": "Speak Korean, unlock the world.",
+      "korean": "한국어, 세상을 열어.",
+      "category": "Purpose",
+      "generated_at": "2026-03-30T07:11:53.065786"
+    },
+    {
+      "english": "New words, new you.",
+      "korean": "새 단어, 새로운 나.",
+      "category": "Purpose",
+      "generated_at": "2026-03-30T07:11:53.065795"
+    },
+    {
+      "english": "Hear this, speak it.",
+      "korean": "이것 들어, 말해 봐.",
+      "category": "Purpose",
+      "generated_at": "2026-03-30T07:11:53.065797"
+    },
+    {
+      "english": "Today's dialogue, flows easily.",
+      "korean": "오늘 대화, 쉽게 이젠.",
+      "category": "Purpose",
+      "generated_at": "2026-03-30T07:11:53.065798"
+    },
+    {
+      "english": "Listen closely, grab the meaning.",
+      "korean": "자세히 들어, 의미 잡아.",
+      "category": "Purpose",
+      "generated_at": "2026-03-30T07:11:53.065799"
     }
   ],
-  "last_updated": "2026-03-30T07:08:16.524055"
+  "last_updated": "2026-03-30T07:11:53.065801"
 }
