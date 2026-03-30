@@ -209,7 +209,37 @@
       "korean": "그냥 말해, 할 수 있어.",
       "category": "Courage",
       "generated_at": "2026-03-30T10:44:21.182060"
+    },
+    {
+      "english": "Speak the word. Now.",
+      "korean": "단어를 말해. 지금.",
+      "category": "Mindfulness",
+      "generated_at": "2026-03-30T10:52:00.158796"
+    },
+    {
+      "english": "This breath, is yours.",
+      "korean": "이 숨결, 너의 것.",
+      "category": "Mindfulness",
+      "generated_at": "2026-03-30T10:52:00.158805"
+    },
+    {
+      "english": "Act with focus. Go.",
+      "korean": "집중하여 행동해. 가.",
+      "category": "Mindfulness",
+      "generated_at": "2026-03-30T10:52:00.158806"
+    },
+    {
+      "english": "Listen. Understand. Respond.",
+      "korean": "들어. 이해해. 답해.",
+      "category": "Mindfulness",
+      "generated_at": "2026-03-30T10:52:00.158807"
+    },
+    {
+      "english": "One sentence, clear. Done.",
+      "korean": "한 문장, 분명히. 끝.",
+      "category": "Mindfulness",
+      "generated_at": "2026-03-30T10:52:00.158808"
     }
   ],
-  "last_updated": "2026-03-30T10:44:21.182062"
+  "last_updated": "2026-03-30T10:52:00.158810"
 }
