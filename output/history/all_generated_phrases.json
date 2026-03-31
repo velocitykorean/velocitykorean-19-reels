@@ -1109,7 +1109,37 @@
       "korean": "이 한국 단어, 네 것이야.",
       "category": "Confidence",
       "generated_at": "2026-03-31T22:07:01.759439"
+    },
+    {
+      "english": "New dawn, fresh path.",
+      "korean": "새 날, 새 길.",
+      "category": "Greetings",
+      "generated_at": "2026-03-31T23:35:57.458068"
+    },
+    {
+      "english": "Like a seedling, grow.",
+      "korean": "씨앗처럼, 자라요.",
+      "category": "Greetings",
+      "generated_at": "2026-03-31T23:35:57.458077"
+    },
+    {
+      "english": "Listen to the wind.",
+      "korean": "바람 말을, 들어요.",
+      "category": "Greetings",
+      "generated_at": "2026-03-31T23:35:57.458078"
+    },
+    {
+      "english": "Stars will guide you.",
+      "korean": "별빛이, 안내할 거예요.",
+      "category": "Greetings",
+      "generated_at": "2026-03-31T23:35:57.458079"
+    },
+    {
+      "english": "Rain nourishes now.",
+      "korean": "비가, 지금 적셔줘요.",
+      "category": "Greetings",
+      "generated_at": "2026-03-31T23:35:57.458080"
     }
   ],
-  "last_updated": "2026-03-31T22:07:01.759440"
+  "last_updated": "2026-03-31T23:35:57.458082"
 }
