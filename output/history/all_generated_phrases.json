@@ -719,7 +719,37 @@
       "korean": "이 단어, 알겠어요.",
       "category": "Growth",
       "generated_at": "2026-03-31T08:17:52.504491"
+    },
+    {
+      "english": "Stop! Danger, behind you.",
+      "korean": "멈춰요! 위험, 뒤에.",
+      "category": "Emergency Korean",
+      "generated_at": "2026-03-31T09:46:25.805665"
+    },
+    {
+      "english": "Run now, it's falling.",
+      "korean": "달려요 이제, 떨어져요.",
+      "category": "Emergency Korean",
+      "generated_at": "2026-03-31T09:46:25.805673"
+    },
+    {
+      "english": "Fire! Get out fast.",
+      "korean": "불이야! 빨리 나가요.",
+      "category": "Emergency Korean",
+      "generated_at": "2026-03-31T09:46:25.805675"
+    },
+    {
+      "english": "Help me! Urgent need.",
+      "korean": "도와줘요! 급해요, 정말.",
+      "category": "Emergency Korean",
+      "generated_at": "2026-03-31T09:46:25.805676"
+    },
+    {
+      "english": "Police! Call them now.",
+      "korean": "경찰! 지금 불러요.",
+      "category": "Emergency Korean",
+      "generated_at": "2026-03-31T09:46:25.805677"
     }
   ],
-  "last_updated": "2026-03-31T08:17:52.504493"
+  "last_updated": "2026-03-31T09:46:25.805682"
 }
