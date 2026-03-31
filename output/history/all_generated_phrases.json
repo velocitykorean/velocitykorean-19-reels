@@ -689,7 +689,37 @@
       "korean": "잘 들었어요, 집중했어요.",
       "category": "Courage",
       "generated_at": "2026-03-31T07:55:35.614424"
+    },
+    {
+      "english": "You understood today.",
+      "korean": "오늘 이해했어요.",
+      "category": "Growth",
+      "generated_at": "2026-03-31T08:17:52.504461"
+    },
+    {
+      "english": "A sentence, just formed.",
+      "korean": "문장이, 방금 나왔어요.",
+      "category": "Growth",
+      "generated_at": "2026-03-31T08:17:52.504487"
+    },
+    {
+      "english": "One phrase, out loud.",
+      "korean": "한 구절, 소리내어.",
+      "category": "Growth",
+      "generated_at": "2026-03-31T08:17:52.504489"
+    },
+    {
+      "english": "Hear a new sound.",
+      "korean": "새로운 소리, 들렸어요.",
+      "category": "Growth",
+      "generated_at": "2026-03-31T08:17:52.504490"
+    },
+    {
+      "english": "This word clicks now.",
+      "korean": "이 단어, 알겠어요.",
+      "category": "Growth",
+      "generated_at": "2026-03-31T08:17:52.504491"
     }
   ],
-  "last_updated": "2026-03-31T07:55:35.614426"
+  "last_updated": "2026-03-31T08:17:52.504493"
 }
