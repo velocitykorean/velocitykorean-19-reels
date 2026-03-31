@@ -749,7 +749,37 @@
       "korean": "경찰! 지금 불러요.",
       "category": "Emergency Korean",
       "generated_at": "2026-03-31T09:46:25.805677"
+    },
+    {
+      "english": "Navigate chaos, find calm.",
+      "korean": "혼란을 넘어, 고요.",
+      "category": "Success",
+      "generated_at": "2026-03-31T10:39:28.453429"
+    },
+    {
+      "english": "Digital dust, bloom.",
+      "korean": "디지털 먼지, 꽃 피워.",
+      "category": "Success",
+      "generated_at": "2026-03-31T10:39:28.453437"
+    },
+    {
+      "english": "Future screen, dream.",
+      "korean": "미래 화면, 꿈꿔.",
+      "category": "Success",
+      "generated_at": "2026-03-31T10:39:28.453438"
+    },
+    {
+      "english": "Progress whispers, listen.",
+      "korean": "발전은 속삭여, 들어.",
+      "category": "Success",
+      "generated_at": "2026-03-31T10:39:28.453439"
+    },
+    {
+      "english": "Smart win, flow.",
+      "korean": "스마트 승리, 흐름.",
+      "category": "Success",
+      "generated_at": "2026-03-31T10:39:28.453441"
     }
   ],
-  "last_updated": "2026-03-31T09:46:25.805682"
+  "last_updated": "2026-03-31T10:39:28.453442"
 }
