@@ -1049,7 +1049,37 @@
       "korean": "숲 깨어나, 이슬 반짝.",
       "category": "Time Korean",
       "generated_at": "2026-03-31T20:04:58.314684"
+    },
+    {
+      "english": "Joy awakens, then settles.",
+      "korean": "기쁨이, 깨어나, 머물어요.",
+      "category": "Joy",
+      "generated_at": "2026-03-31T21:08:55.017168"
+    },
+    {
+      "english": "Sunbeam's touch, happiness ignites.",
+      "korean": "햇살이, 닿으면, 웃음이 켜져요.",
+      "category": "Joy",
+      "generated_at": "2026-03-31T21:08:55.017178"
+    },
+    {
+      "english": "A gentle breeze, carries laughter.",
+      "korean": "살랑, 바람, 웃음을 데려가요.",
+      "category": "Joy",
+      "generated_at": "2026-03-31T21:08:55.017179"
+    },
+    {
+      "english": "Quiet wonder, heart expands.",
+      "korean": "고요한, 설렘, 마음이 넓어요.",
+      "category": "Joy",
+      "generated_at": "2026-03-31T21:08:55.017180"
+    },
+    {
+      "english": "Sparkle found, light fills.",
+      "korean": "반짝임, 찾아, 빛으로 채워요.",
+      "category": "Joy",
+      "generated_at": "2026-03-31T21:08:55.017181"
     }
   ],
-  "last_updated": "2026-03-31T20:04:58.314686"
+  "last_updated": "2026-03-31T21:08:55.017183"
 }
