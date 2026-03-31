@@ -839,7 +839,37 @@
       "korean": "잘해내, 빛나게.",
       "category": "Balance",
       "generated_at": "2026-03-31T14:50:55.848061"
+    },
+    {
+      "english": "Be the sunlight, on a bloom.",
+      "korean": "꽃에 햇살 되세요.",
+      "category": "Purpose",
+      "generated_at": "2026-03-31T16:17:24.331271"
+    },
+    {
+      "english": "Ocean currents, pull you forward.",
+      "korean": "바다 물결, 이끕니다.",
+      "category": "Purpose",
+      "generated_at": "2026-03-31T16:17:24.331280"
+    },
+    {
+      "english": "Mountain peak, in your sight.",
+      "korean": "산 정상이, 목표지요.",
+      "category": "Purpose",
+      "generated_at": "2026-03-31T16:17:24.331281"
+    },
+    {
+      "english": "Sunrise paints, your new day.",
+      "korean": "새벽 별, 시작하세요.",
+      "category": "Purpose",
+      "generated_at": "2026-03-31T16:17:24.331282"
+    },
+    {
+      "english": "River flows, where you go.",
+      "korean": "강물 따라, 흘러가요.",
+      "category": "Purpose",
+      "generated_at": "2026-03-31T16:17:24.331283"
     }
   ],
-  "last_updated": "2026-03-31T14:50:55.848063"
+  "last_updated": "2026-03-31T16:17:24.331285"
 }
