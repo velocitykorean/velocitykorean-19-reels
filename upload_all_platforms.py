@@ -20,6 +20,7 @@ if upload_dir.exists() and str(upload_dir) not in sys.path:
 # Import individual uploaders
 upload_to_facebook = None
 upload_to_instagram = None
+upload_to_youtube = None
 
 try:
     from upload_facebook import upload_to_facebook as fb_upload
@@ -32,6 +33,12 @@ try:
     upload_to_instagram = ig_upload
 except ImportError as e:
     print(f"[!] Instagram upload module not available: {e}")
+
+try:
+    from upload_to_youtube import upload_to_youtube as yt_upload
+    upload_to_youtube = yt_upload
+except ImportError as e:
+    print(f"[!] YouTube upload module not available: {e}")
 
 
 def get_latest_reel():
@@ -183,6 +190,7 @@ def upload_to_all_platforms(video_path, caption, category):
     platforms = [
         ("facebook", upload_to_facebook, "📘 Facebook"),
         ("instagram", upload_to_instagram, "📸 Instagram"),
+        ("youtube", upload_to_youtube, "📺 YouTube"),
     ]
 
     for platform_name, upload_func, display_name in platforms:
@@ -204,6 +212,14 @@ def upload_to_all_platforms(video_path, caption, category):
                         video_path=video_path,
                         caption=caption,
                         is_story=False
+                    )
+                elif platform_name == "youtube":
+                    upload_result = upload_func(
+                        video_path=video_path,
+                        title=f"Korean Shorts: {category}",
+                        description=caption,
+                        tags=["Korean", "Learn Korean", "Korean Shorts", category],
+                        category_id="22"
                     )
 
                 if upload_result:
