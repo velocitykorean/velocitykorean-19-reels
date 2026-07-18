@@ -1529,7 +1529,37 @@
       "korean": "피드백 안아, 빨리 커.",
       "category": "Kindness",
       "generated_at": "2026-07-17T20:45:10.095988"
+    },
+    {
+      "english": "Perfect pronunciation, I hear.",
+      "korean": "정확 발음, 들려요.",
+      "category": "Numbers Korean",
+      "generated_at": "2026-07-18T14:49:44.026805"
+    },
+    {
+      "english": "Word understood, good win.",
+      "korean": "단어 이해, 좋은 승리.",
+      "category": "Numbers Korean",
+      "generated_at": "2026-07-18T14:49:44.026816"
+    },
+    {
+      "english": "Conversation flowed, truly.",
+      "korean": "대화 흐름, 정말요.",
+      "category": "Numbers Korean",
+      "generated_at": "2026-07-18T14:49:44.026818"
+    },
+    {
+      "english": "Lesson learned, yes.",
+      "korean": "배움 완료, 네.",
+      "category": "Numbers Korean",
+      "generated_at": "2026-07-18T14:49:44.026818"
+    },
+    {
+      "english": "Korean feeling, strong.",
+      "korean": "한국어 감각, 강해요.",
+      "category": "Numbers Korean",
+      "generated_at": "2026-07-18T14:49:44.026819"
     }
   ],
-  "last_updated": "2026-07-17T20:45:10.095990"
+  "last_updated": "2026-07-18T14:49:44.026821"
 }
