@@ -1559,7 +1559,37 @@
       "korean": "한국어 감각, 강해요.",
       "category": "Numbers Korean",
       "generated_at": "2026-07-18T14:49:44.026819"
+    },
+    {
+      "english": "Lost signal, find calm.",
+      "korean": "신호 끊김, 침착 유지.",
+      "category": "Emergency Korean",
+      "generated_at": "2026-07-18T20:38:29.391806"
+    },
+    {
+      "english": "Wrong turn, new path.",
+      "korean": "길 잘못, 새 길.",
+      "category": "Emergency Korean",
+      "generated_at": "2026-07-18T20:38:29.391816"
+    },
+    {
+      "english": "Fire alert, evacuate us.",
+      "korean": "불났어요, 대피해요.",
+      "category": "Emergency Korean",
+      "generated_at": "2026-07-18T20:38:29.391818"
+    },
+    {
+      "english": "Need doctor, for my child.",
+      "korean": "애 아파요, 의사.",
+      "category": "Emergency Korean",
+      "generated_at": "2026-07-18T20:38:29.391819"
+    },
+    {
+      "english": "Feeling sick, in morning.",
+      "korean": "체했어요, 아침에.",
+      "category": "Emergency Korean",
+      "generated_at": "2026-07-18T20:38:29.391820"
     }
   ],
-  "last_updated": "2026-07-18T14:49:44.026821"
+  "last_updated": "2026-07-18T20:38:29.391822"
 }
