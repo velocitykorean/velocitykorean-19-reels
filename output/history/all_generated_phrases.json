@@ -1619,7 +1619,37 @@
       "korean": "고요한 힘, 깨어나.",
       "category": "Restaurant Korean",
       "generated_at": "2026-07-19T14:53:01.425943"
+    },
+    {
+      "english": "Calm breath for sharp focus.",
+      "korean": "잔잔함, 날카로운 집중.",
+      "category": "Patience",
+      "generated_at": "2026-07-19T20:39:16.342332"
+    },
+    {
+      "english": "Wait not wait, prepare.",
+      "korean": "기다림 않음, 준비함.",
+      "category": "Patience",
+      "generated_at": "2026-07-19T20:39:16.342340"
+    },
+    {
+      "english": "Seeds sprout, in quiet.",
+      "korean": "씨앗 틔우네, 고요하다.",
+      "category": "Patience",
+      "generated_at": "2026-07-19T20:39:16.342342"
+    },
+    {
+      "english": "Still mind, sees future.",
+      "korean": "고요 마음, 앞을 봐.",
+      "category": "Patience",
+      "generated_at": "2026-07-19T20:39:16.342343"
+    },
+    {
+      "english": "Endure now, bloom tomorrow.",
+      "korean": "오늘 참아, 내일 피자.",
+      "category": "Patience",
+      "generated_at": "2026-07-19T20:39:16.342344"
     }
   ],
-  "last_updated": "2026-07-19T14:53:01.425944"
+  "last_updated": "2026-07-19T20:39:16.342346"
 }
