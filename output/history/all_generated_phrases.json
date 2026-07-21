@@ -1709,7 +1709,37 @@
       "korean": "버스, 어디에요?",
       "category": "Travel Korean",
       "generated_at": "2026-07-20T21:02:43.515766"
+    },
+    {
+      "english": "Seed planted, bloom will come.",
+      "korean": "씨앗 심었네, 꽃 필 거래.",
+      "category": "Purpose",
+      "generated_at": "2026-07-21T15:42:06.432887"
+    },
+    {
+      "english": "Listen for the stream's song.",
+      "korean": "개울 소리, 귀 기울여.",
+      "category": "Purpose",
+      "generated_at": "2026-07-21T15:42:06.432897"
+    },
+    {
+      "english": "Sun climbs the silence.",
+      "korean": "해 오르네, 말 없는 듯.",
+      "category": "Purpose",
+      "generated_at": "2026-07-21T15:42:06.432898"
+    },
+    {
+      "english": "Branch reaches for the sky.",
+      "korean": "가지 뻗네, 하늘 향해서.",
+      "category": "Purpose",
+      "generated_at": "2026-07-21T15:42:06.432899"
+    },
+    {
+      "english": "Dewdrop reflects the world.",
+      "korean": "이슬 하나, 세상 담았네.",
+      "category": "Purpose",
+      "generated_at": "2026-07-21T15:42:06.432900"
     }
   ],
-  "last_updated": "2026-07-20T21:02:43.515768"
+  "last_updated": "2026-07-21T15:42:06.432901"
 }
