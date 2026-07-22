@@ -60,7 +60,9 @@ def get_authenticated_service():
             print("   3. Run a local script to get a new refresh token.")
         raise
     
-    return build('youtube', 'v3', credentials=creds)
+    import httplib2
+    http = httplib2.Http(timeout=600)
+    return build('youtube', 'v3', credentials=creds, http=http)
 
 def upload_to_youtube(video_path, title, description, tags=None, category_id='22'):
     """Upload video to YouTube and return result."""
