@@ -17,22 +17,8 @@ upload_dir = Path(__file__).parent / "upload"
 if upload_dir.exists() and str(upload_dir) not in sys.path:
     sys.path.insert(0, str(upload_dir))
 
-# Import individual uploaders
-upload_to_facebook = None
-upload_to_instagram = None
+# Import YouTube uploader only (Facebook/Instagram removed)
 upload_to_youtube = None
-
-try:
-    from upload_facebook import upload_to_facebook as fb_upload
-    upload_to_facebook = fb_upload
-except ImportError as e:
-    print(f"[!] Facebook upload module not available: {e}")
-
-try:
-    from upload_instagram import upload_to_instagram as ig_upload
-    upload_to_instagram = ig_upload
-except ImportError as e:
-    print(f"[!] Instagram upload module not available: {e}")
 
 try:
     from upload_to_youtube import upload_to_youtube as yt_upload
@@ -188,8 +174,6 @@ def upload_to_all_platforms(video_path, caption, category):
         return results
 
     platforms = [
-        ("facebook", upload_to_facebook, "📘 Facebook"),
-        ("instagram", upload_to_instagram, "📸 Instagram"),
         ("youtube", upload_to_youtube, "📺 YouTube"),
     ]
 
