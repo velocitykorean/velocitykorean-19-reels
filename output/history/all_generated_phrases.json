@@ -2339,7 +2339,37 @@
       "korean": "첫 이슬방울, 아침 반짝.",
       "category": "Numbers Korean",
       "generated_at": "2026-08-01T20:41:45.331186"
+    },
+    {
+      "english": "Sudden storm? Stay calm.",
+      "korean": "갑작스러운 폭풍?, 침착하세요.",
+      "category": "Emergency Korean",
+      "generated_at": "2026-08-02T20:44:02.473763"
+    },
+    {
+      "english": "Lost signal, trust instinct.",
+      "korean": "신호 없음, 본능 믿어요.",
+      "category": "Emergency Korean",
+      "generated_at": "2026-08-02T20:44:02.473772"
+    },
+    {
+      "english": "Emergency? Breathe first.",
+      "korean": "비상 시?, 먼저 숨쉬세요.",
+      "category": "Emergency Korean",
+      "generated_at": "2026-08-02T20:44:02.473774"
+    },
+    {
+      "english": "Unexpected fall, stand up.",
+      "korean": "예상 못한 넘어짐, 일어나요.",
+      "category": "Emergency Korean",
+      "generated_at": "2026-08-02T20:44:02.473775"
+    },
+    {
+      "english": "Blocked path, find detour.",
+      "korean": "막힌 길?, 돌아가세요.",
+      "category": "Emergency Korean",
+      "generated_at": "2026-08-02T20:44:02.473776"
     }
   ],
-  "last_updated": "2026-08-01T20:41:45.331188"
+  "last_updated": "2026-08-02T20:44:02.473778"
 }
