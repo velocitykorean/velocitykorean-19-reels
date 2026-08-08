@@ -2639,7 +2639,37 @@
       "korean": "잠시 멈춰, 맑게 봐.",
       "category": "Joy",
       "generated_at": "2026-08-07T20:31:18.462454"
+    },
+    {
+      "english": "Learning sprouts, daily.",
+      "korean": "매일, 배우는 싹.",
+      "category": "Growth",
+      "generated_at": "2026-08-08T14:29:01.383819"
+    },
+    {
+      "english": "New word, bright start.",
+      "korean": "새 단어, 밝은 시작.",
+      "category": "Growth",
+      "generated_at": "2026-08-08T14:29:01.383829"
+    },
+    {
+      "english": "Small phrase, big joy.",
+      "korean": "작은 문장, 큰 기쁨.",
+      "category": "Growth",
+      "generated_at": "2026-08-08T14:29:01.383831"
+    },
+    {
+      "english": "Understand more, feel good.",
+      "korean": "더 알면, 기분 좋아요.",
+      "category": "Growth",
+      "generated_at": "2026-08-08T14:29:01.383832"
+    },
+    {
+      "english": "Listen, understand bit by bit.",
+      "korean": "듣고, 조금씩 이해.",
+      "category": "Growth",
+      "generated_at": "2026-08-08T14:29:01.383833"
     }
   ],
-  "last_updated": "2026-08-07T20:31:18.462456"
+  "last_updated": "2026-08-08T14:29:01.383834"
 }
