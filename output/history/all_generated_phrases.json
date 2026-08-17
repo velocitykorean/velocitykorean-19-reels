@@ -3149,7 +3149,37 @@
       "korean": "천천히 숨 쉬어, 할 수 있어.",
       "category": "Confidence",
       "generated_at": "2026-08-16T20:12:58.164088"
+    },
+    {
+      "english": "Speak now, understand later.",
+      "korean": "지금 말해요, 나중에 알아요.",
+      "category": "Basic Phrases",
+      "generated_at": "2026-08-17T14:24:10.313100"
+    },
+    {
+      "english": "Listen actively, learn quickly.",
+      "korean": "잘 듣고, 빨리 배워요.",
+      "category": "Basic Phrases",
+      "generated_at": "2026-08-17T14:24:10.313110"
+    },
+    {
+      "english": "Write this, remember it.",
+      "korean": "이것 쓰세요, 기억해요.",
+      "category": "Basic Phrases",
+      "generated_at": "2026-08-17T14:24:10.313111"
+    },
+    {
+      "english": "Read aloud, feel the flow.",
+      "korean": "소리 내 읽어요, 흐름 느껴요.",
+      "category": "Basic Phrases",
+      "generated_at": "2026-08-17T14:24:10.313112"
+    },
+    {
+      "english": "Practice daily, fluency grows.",
+      "korean": "매일 연습, 유창해져요.",
+      "category": "Basic Phrases",
+      "generated_at": "2026-08-17T14:24:10.313113"
     }
   ],
-  "last_updated": "2026-08-16T20:12:58.164089"
+  "last_updated": "2026-08-17T14:24:10.313114"
 }
