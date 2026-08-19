@@ -3299,7 +3299,37 @@
       "korean": "집의 불꽃, 더 밝게 타올라.",
       "category": "Family Terms",
       "generated_at": "2026-08-19T14:30:01.569587"
+    },
+    {
+      "english": "Your voice, Korean.",
+      "korean": "당신 목소리, 한국어.",
+      "category": "Purpose",
+      "generated_at": "2026-08-19T20:19:37.785884"
+    },
+    {
+      "english": "Learn Korean, today.",
+      "korean": "한국어 배워요, 오늘.",
+      "category": "Purpose",
+      "generated_at": "2026-08-19T20:19:37.785893"
+    },
+    {
+      "english": "Open new doors.",
+      "korean": "새 문을 열어요.",
+      "category": "Purpose",
+      "generated_at": "2026-08-19T20:19:37.785895"
+    },
+    {
+      "english": "Connect globally, easily.",
+      "korean": "세계와 연결, 쉽게.",
+      "category": "Purpose",
+      "generated_at": "2026-08-19T20:19:37.785896"
+    },
+    {
+      "english": "Understand more, fully.",
+      "korean": "더 이해해요, 완전히.",
+      "category": "Purpose",
+      "generated_at": "2026-08-19T20:19:37.785897"
     }
   ],
-  "last_updated": "2026-08-19T14:30:01.569589"
+  "last_updated": "2026-08-19T20:19:37.785899"
 }
