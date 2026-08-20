@@ -3329,7 +3329,37 @@
       "korean": "더 이해해요, 완전히.",
       "category": "Purpose",
       "generated_at": "2026-08-19T20:19:37.785897"
+    },
+    {
+      "english": "One item, purchased!",
+      "korean": "하나 샀어요!",
+      "category": "Shopping Korean",
+      "generated_at": "2026-08-20T14:32:53.960708"
+    },
+    {
+      "english": "Found great deal.",
+      "korean": "좋은 딜 찾았어.",
+      "category": "Shopping Korean",
+      "generated_at": "2026-08-20T14:32:53.960718"
+    },
+    {
+      "english": "This color, perfect.",
+      "korean": "이 색깔, 완벽해.",
+      "category": "Shopping Korean",
+      "generated_at": "2026-08-20T14:32:53.960720"
+    },
+    {
+      "english": "Can afford now.",
+      "korean": "이젠 살 수 있어.",
+      "category": "Shopping Korean",
+      "generated_at": "2026-08-20T14:32:53.960721"
+    },
+    {
+      "english": "My new find!",
+      "korean": "내 새 물건!",
+      "category": "Shopping Korean",
+      "generated_at": "2026-08-20T14:32:53.960722"
     }
   ],
-  "last_updated": "2026-08-19T20:19:37.785899"
+  "last_updated": "2026-08-20T14:32:53.960724"
 }
