@@ -3629,7 +3629,37 @@
       "korean": "지금 하고, 후회는 땡.",
       "category": "Numbers Korean",
       "generated_at": "2026-08-24T20:20:16.899618"
+    },
+    {
+      "english": "Speak Korean, bloom now.",
+      "korean": "한국어 하세요, 지금 피어나세요.",
+      "category": "Confidence",
+      "generated_at": "2026-08-25T14:41:22.347824"
+    },
+    {
+      "english": "New words, conquer fear.",
+      "korean": "새 단어, 두려움 정복.",
+      "category": "Confidence",
+      "generated_at": "2026-08-25T14:41:22.347839"
+    },
+    {
+      "english": "Listen closely, understand deeply.",
+      "korean": "잘 들어요, 깊이 이해해요.",
+      "category": "Confidence",
+      "generated_at": "2026-08-25T14:41:22.347842"
+    },
+    {
+      "english": "This chance, seize it.",
+      "korean": "이 기회, 잡아요.",
+      "category": "Confidence",
+      "generated_at": "2026-08-25T14:41:22.347845"
+    },
+    {
+      "english": "Try again, succeed soon.",
+      "korean": "다시 시도, 곧 성공.",
+      "category": "Confidence",
+      "generated_at": "2026-08-25T14:41:22.347847"
     }
   ],
-  "last_updated": "2026-08-24T20:20:16.899620"
+  "last_updated": "2026-08-25T14:41:22.347851"
 }
