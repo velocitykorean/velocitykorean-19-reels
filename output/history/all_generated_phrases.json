@@ -3659,7 +3659,37 @@
       "korean": "다시 시도, 곧 성공.",
       "category": "Confidence",
       "generated_at": "2026-08-25T14:41:22.347847"
+    },
+    {
+      "english": "Your voice matters, speak gently.",
+      "korean": "네 목소리 소중해, 살살 말해.",
+      "category": "Basic Phrases",
+      "generated_at": "2026-08-25T20:19:23.706714"
+    },
+    {
+      "english": "Listen closely, friend understands.",
+      "korean": "잘 들어봐, 친구가 알아.",
+      "category": "Basic Phrases",
+      "generated_at": "2026-08-25T20:19:23.706726"
+    },
+    {
+      "english": "Try a little, it's okay.",
+      "korean": "조금 해봐, 괜찮아.",
+      "category": "Basic Phrases",
+      "generated_at": "2026-08-25T20:19:23.706727"
+    },
+    {
+      "english": "Breathe deeply, find calmness.",
+      "korean": "깊이 숨쉬어, 차분함을 찾아.",
+      "category": "Basic Phrases",
+      "generated_at": "2026-08-25T20:19:23.706729"
+    },
+    {
+      "english": "Be kind, always.",
+      "korean": "친절하게, 늘.",
+      "category": "Basic Phrases",
+      "generated_at": "2026-08-25T20:19:23.706730"
     }
   ],
-  "last_updated": "2026-08-25T14:41:22.347851"
+  "last_updated": "2026-08-25T20:19:23.706731"
 }
