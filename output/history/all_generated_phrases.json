@@ -4259,7 +4259,37 @@
       "korean": "한국말, 정말 좋아.",
       "category": "Gratitude",
       "generated_at": "2026-09-04T17:22:50.259109"
+    },
+    {
+      "english": "One new word, learned.",
+      "korean": "새 단어 하나, 배웠어요.",
+      "category": "Basic Phrases",
+      "generated_at": "2026-09-04T21:58:01.345327"
+    },
+    {
+      "english": "Understood a sentence, yay!",
+      "korean": "문장 이해했어요, 와!",
+      "category": "Basic Phrases",
+      "generated_at": "2026-09-04T21:58:01.345336"
+    },
+    {
+      "english": "Said a phrase, smoothly.",
+      "korean": "문장 매끄럽게, 말했어요.",
+      "category": "Basic Phrases",
+      "generated_at": "2026-09-04T21:58:01.345337"
+    },
+    {
+      "english": "Small progress, feels good.",
+      "korean": "작은 발전, 기분 좋아요.",
+      "category": "Basic Phrases",
+      "generated_at": "2026-09-04T21:58:01.345339"
+    },
+    {
+      "english": "Today's lesson, done.",
+      "korean": "오늘 수업, 끝냈어요.",
+      "category": "Basic Phrases",
+      "generated_at": "2026-09-04T21:58:01.345340"
     }
   ],
-  "last_updated": "2026-09-04T17:22:50.259111"
+  "last_updated": "2026-09-04T21:58:01.345342"
 }
