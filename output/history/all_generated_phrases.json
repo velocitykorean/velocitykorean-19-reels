@@ -4559,7 +4559,37 @@
       "korean": "가격 확인, 해주세요.",
       "category": "Shopping Korean",
       "generated_at": "2026-09-09T22:07:48.265945"
+    },
+    {
+      "english": "My wise grandpa, listens.",
+      "korean": "우리 할아버지, 귀 기울여요.",
+      "category": "Family Terms",
+      "generated_at": "2026-09-10T17:29:11.155521"
+    },
+    {
+      "english": "Kind grandma, teaches me.",
+      "korean": "친절한 할머니, 가르쳐 줘요.",
+      "category": "Family Terms",
+      "generated_at": "2026-09-10T17:29:11.155529"
+    },
+    {
+      "english": "My dad, always helps.",
+      "korean": "아빠는, 늘 도와줘요.",
+      "category": "Family Terms",
+      "generated_at": "2026-09-10T17:29:11.155531"
+    },
+    {
+      "english": "Mom's cooking, delicious!",
+      "korean": "엄마 밥, 맛있어요!",
+      "category": "Family Terms",
+      "generated_at": "2026-09-10T17:29:11.155532"
+    },
+    {
+      "english": "Brother's joke, funny.",
+      "korean": "형제 농담, 재밌어요.",
+      "category": "Family Terms",
+      "generated_at": "2026-09-10T17:29:11.155533"
     }
   ],
-  "last_updated": "2026-09-09T22:07:48.265947"
+  "last_updated": "2026-09-10T17:29:11.155535"
 }
