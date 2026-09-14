@@ -4829,7 +4829,37 @@
       "korean": "달빛 부드럽, 영혼 날아.",
       "category": "Basic Phrases",
       "generated_at": "2026-09-14T19:00:59.966774"
+    },
+    {
+      "english": "Help me now, please!",
+      "korean": "도와주세요, 빨리!",
+      "category": "Emergency Korean",
+      "generated_at": "2026-09-14T22:52:43.201845"
+    },
+    {
+      "english": "Danger here, run!",
+      "korean": "위험해요, 뛰세요!",
+      "category": "Emergency Korean",
+      "generated_at": "2026-09-14T22:52:43.201852"
+    },
+    {
+      "english": "Fire! Go out!",
+      "korean": "불이야! 나가요!",
+      "category": "Emergency Korean",
+      "generated_at": "2026-09-14T22:52:43.201853"
+    },
+    {
+      "english": "Call police, quickly!",
+      "korean": "경찰 불러요, 바로!",
+      "category": "Emergency Korean",
+      "generated_at": "2026-09-14T22:52:43.201854"
+    },
+    {
+      "english": "I need doctor, urgently!",
+      "korean": "의사 필요해요, 급해요!",
+      "category": "Emergency Korean",
+      "generated_at": "2026-09-14T22:52:43.201854"
     }
   ],
-  "last_updated": "2026-09-14T19:00:59.966776"
+  "last_updated": "2026-09-14T22:52:43.201856"
 }
