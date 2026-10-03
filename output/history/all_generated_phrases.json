@@ -5969,7 +5969,37 @@
       "korean": "지금 손 내밀어, 관계는 꽃피.",
       "category": "Friendship",
       "generated_at": "2026-10-03T17:45:37.216269"
+    },
+    {
+      "english": "This tastes great, friend.",
+      "korean": "이거 정말 맛있어요, 친구.",
+      "category": "Restaurant Korean",
+      "generated_at": "2026-10-03T22:34:18.783644"
+    },
+    {
+      "english": "Try a little more.",
+      "korean": "조금 더 드셔 보세요.",
+      "category": "Restaurant Korean",
+      "generated_at": "2026-10-03T22:34:18.783657"
+    },
+    {
+      "english": "What's your favorite?",
+      "korean": "뭘 제일 좋아해요?",
+      "category": "Restaurant Korean",
+      "generated_at": "2026-10-03T22:34:18.783658"
+    },
+    {
+      "english": "One more snack?",
+      "korean": "간식 하나 더?",
+      "category": "Restaurant Korean",
+      "generated_at": "2026-10-03T22:34:18.783659"
+    },
+    {
+      "english": "Water, please.",
+      "korean": "물 좀 부탁해요.",
+      "category": "Restaurant Korean",
+      "generated_at": "2026-10-03T22:34:18.783660"
     }
   ],
-  "last_updated": "2026-10-03T17:45:37.216271"
+  "last_updated": "2026-10-03T22:34:18.783662"
 }
