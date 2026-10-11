@@ -6419,7 +6419,37 @@
       "korean": "빠른 선택, 필요해.",
       "category": "Emergency Korean",
       "generated_at": "2026-10-10T23:06:44.042462"
+    },
+    {
+      "english": "Korean journeys, begin now.",
+      "korean": "한국어 여행, 지금 시작.",
+      "category": "Success",
+      "generated_at": "2026-10-11T18:36:29.705144"
+    },
+    {
+      "english": "Speak Korean, find your voice.",
+      "korean": "한국어 하세요, 목소리 찾아요.",
+      "category": "Success",
+      "generated_at": "2026-10-11T18:36:29.705151"
+    },
+    {
+      "english": "Practice daily, build muscle.",
+      "korean": "매일 연습, 근육 만들.",
+      "category": "Success",
+      "generated_at": "2026-10-11T18:36:29.705153"
+    },
+    {
+      "english": "Listen hard, unlock the meaning.",
+      "korean": "잘 들어, 의미 풀어.",
+      "category": "Success",
+      "generated_at": "2026-10-11T18:36:29.705154"
+    },
+    {
+      "english": "Words feel right, slowly.",
+      "korean": "단어는 느껴져, 천천히.",
+      "category": "Success",
+      "generated_at": "2026-10-11T18:36:29.705155"
     }
   ],
-  "last_updated": "2026-10-10T23:06:44.042464"
+  "last_updated": "2026-10-11T18:36:29.705157"
 }
