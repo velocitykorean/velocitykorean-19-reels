@@ -423,28 +423,30 @@ Return as JSON: [{{"english": "...", "korean": "...", "romanization": "..."}}]""
 
 # ============== AUDIO GENERATION ==============
 
+def configure_edge_tts():
+    import edge_tts.constants
+    active_url = "wss://api.msedgeservices.com/tts/cognitiveservices/websocket/v1?Ocp-Apim-Subscription-Key=6A5AA1D4EAFF4E9FB37E23D68491D6F4"
+    edge_tts.constants.TRUSTED_CLIENT_TOKEN = "6A5AA1D4EAFF4E9FB37E23D68491D6F4"
+    edge_tts.constants.WSS_URL = active_url
+    edge_tts.constants.BASE_URL = active_url
+
 async def generate_single_audio(text: str, voice: str, output_path: str, max_retries: int = 3):
-    """Generate audio using Edge TTS with retry logic"""
+    """Generate audio using Edge TTS with retry logic and active endpoint"""
     import edge_tts
-    
+    configure_edge_tts()
     for attempt in range(max_retries):
         try:
             communicate = edge_tts.Communicate(text, voice)
             await communicate.save(output_path)
-            
-            # Verify audio was created
             if Path(output_path).exists() and Path(output_path).stat().st_size > 0:
                 return True
-            
         except Exception as e:
             if attempt < max_retries - 1:
                 print(f"  TTS error (attempt {attempt + 1}/{max_retries}): {e} - Retrying...")
                 await asyncio.sleep(1)
             else:
                 print(f"  TTS error (final attempt): {e}")
-    
     return False
-
 
 def generate_all_audio(phrases: list, output_dir: str):
     """Generate audio for all phrases with proper timing"""
