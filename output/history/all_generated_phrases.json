@@ -6779,7 +6779,37 @@
       "korean": "부드러운 흐름, 넓은 곳으로.",
       "category": "Numbers Korean",
       "generated_at": "2026-10-16T22:21:01.864512"
+    },
+    {
+      "english": "Screens dim gradually, real world sharpens.",
+      "korean": "화면 흐릿, 현실 또렷.",
+      "category": "Time Korean",
+      "generated_at": "2026-10-17T16:49:46.323703"
+    },
+    {
+      "english": "Scroll stops sometimes, listen here.",
+      "korean": "스크롤 멈춤, 여기 가만.",
+      "category": "Time Korean",
+      "generated_at": "2026-10-17T16:49:46.323712"
+    },
+    {
+      "english": "Busyness ebbs, notice stillness.",
+      "korean": "바쁨 빠짐, 고요 눈에.",
+      "category": "Time Korean",
+      "generated_at": "2026-10-17T16:49:46.323713"
+    },
+    {
+      "english": "Chasing likes fades, real likes bloom.",
+      "korean": "좋아요, 쫓다 사라짐, 참 좋아요.",
+      "category": "Time Korean",
+      "generated_at": "2026-10-17T16:49:46.323715"
+    },
+    {
+      "english": "Notification silence sings, life responds.",
+      "korean": "알림 쉼, 삶 답.",
+      "category": "Time Korean",
+      "generated_at": "2026-10-17T16:49:46.323716"
     }
   ],
-  "last_updated": "2026-10-16T22:21:01.864513"
+  "last_updated": "2026-10-17T16:49:46.323718"
 }
