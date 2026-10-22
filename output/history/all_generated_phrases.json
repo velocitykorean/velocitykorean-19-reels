@@ -7109,7 +7109,37 @@
       "korean": "뿌리 자라요, 여기서.",
       "category": "Greetings",
       "generated_at": "2026-10-22T18:15:45.910652"
+    },
+    {
+      "english": "Speak bold word, begin now.",
+      "korean": "말해, 큰 말, 시작 해.",
+      "category": "Confidence",
+      "generated_at": "2026-10-22T22:53:47.331598"
+    },
+    {
+      "english": "Your step echoes forward.",
+      "korean": "네 발자국, 울린다 앞으로.",
+      "category": "Confidence",
+      "generated_at": "2026-10-22T22:53:47.331606"
+    },
+    {
+      "english": "Think different, dare to grow.",
+      "korean": "달리 생각, 감히 자라.",
+      "category": "Confidence",
+      "generated_at": "2026-10-22T22:53:47.331607"
+    },
+    {
+      "english": "Your idea sparks change.",
+      "korean": "네 생각, 불꽃 바꿔.",
+      "category": "Confidence",
+      "generated_at": "2026-10-22T22:53:47.331607"
+    },
+    {
+      "english": "New sound, heard soon.",
+      "korean": "새로운 소리, 들린다 곧.",
+      "category": "Confidence",
+      "generated_at": "2026-10-22T22:53:47.331608"
     }
   ],
-  "last_updated": "2026-10-22T18:15:45.910654"
+  "last_updated": "2026-10-22T22:53:47.331609"
 }
