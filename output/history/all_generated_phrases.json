@@ -7379,7 +7379,37 @@
       "korean": "왜 묻고, 먼저 다정해져",
       "category": "Wisdom",
       "generated_at": "2026-11-04T00:18:38.400044"
+    },
+    {
+      "english": "Help, now, please—anyone.",
+      "korean": "도와주세요, 지금, 부탁드려요.",
+      "category": "Emergency Korean",
+      "generated_at": "2026-11-04T20:39:57.740199"
+    },
+    {
+      "english": "Call an ambulance, please.",
+      "korean": "구급차를 불러주세요, 제발.",
+      "category": "Emergency Korean",
+      "generated_at": "2026-11-04T20:39:57.740211"
+    },
+    {
+      "english": "I feel sick, please help.",
+      "korean": "저 아파요, 도와주세요.",
+      "category": "Emergency Korean",
+      "generated_at": "2026-11-04T20:39:57.740213"
+    },
+    {
+      "english": "Stop the bleeding, please.",
+      "korean": "피 멈춰요, 부탁해요.",
+      "category": "Emergency Korean",
+      "generated_at": "2026-11-04T20:39:57.740213"
+    },
+    {
+      "english": "I’m lost, please guide me.",
+      "korean": "길을 잃었어요, 안내해 주세요.",
+      "category": "Emergency Korean",
+      "generated_at": "2026-11-04T20:39:57.740214"
     }
   ],
-  "last_updated": "2026-11-04T00:18:38.400046"
+  "last_updated": "2026-11-04T20:39:57.740216"
 }
