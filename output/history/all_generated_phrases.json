@@ -7769,7 +7769,37 @@
       "korean": "다시 물어봐요, 뒤처지지 않아요",
       "category": "Confidence",
       "generated_at": "2026-11-10T20:42:25.576778"
+    },
+    {
+      "english": "Order calmly, thank the kitchen",
+      "korean": "조용히 주문해요, 주방에 감사해요",
+      "category": "Restaurant Korean",
+      "generated_at": "2026-11-11T00:20:41.990430"
+    },
+    {
+      "english": "Taste first, then decide dessert",
+      "korean": "먼저 맛봐요, 그다음 디저트",
+      "category": "Restaurant Korean",
+      "generated_at": "2026-11-11T00:20:41.990442"
+    },
+    {
+      "english": "Check receipts, protect your budget",
+      "korean": "영수증 확인해요, 예산을 지켜요",
+      "category": "Restaurant Korean",
+      "generated_at": "2026-11-11T00:20:41.990443"
+    },
+    {
+      "english": "Say please, slow your stress",
+      "korean": "부탁해요, 스트레스 줄여요",
+      "category": "Restaurant Korean",
+      "generated_at": "2026-11-11T00:20:41.990444"
+    },
+    {
+      "english": "Spill less, breathe through mistakes",
+      "korean": "덜 흘리고, 실수도 숨 쉬어요",
+      "category": "Restaurant Korean",
+      "generated_at": "2026-11-11T00:20:41.990445"
     }
   ],
-  "last_updated": "2026-11-10T20:42:25.576779"
+  "last_updated": "2026-11-11T00:20:41.990446"
 }
