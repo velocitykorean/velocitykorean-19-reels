@@ -1,223 +1,281 @@
-import os
-import requests
-import time
-import base64
+"""
+Instagram Reels Upload - VELOCITY HEBREW
+Improved: compression, multi-host fallback, graph.facebook primary, auth error handling
+"""
+import os, subprocess, requests, tempfile, time
 from pathlib import Path
 from dotenv import load_dotenv
 
-env_path = Path(__file__).parent.parent / '.env'
-load_dotenv(dotenv_path=env_path, override=True)
+from cover_frame import thumb_offset_ms
 
-def upload_video_to_github(video_path):
-    repo = os.environ.get('GITHUB_REPOSITORY')
-    token = os.environ.get('GITHUB_TOKEN')
-    if not repo or not token:
-        raise Exception("GITHUB_REPOSITORY or GITHUB_TOKEN not set")
-    
-    h = {'Authorization': f'Bearer {token}', 'Accept': 'application/vnd.github+json'}
-    remote_path = 'output/temp/video.mp4'
-    branch = 'main'
-    
-    # Read video file and encode as base64
-    with open(video_path, 'rb') as f:
-        content_b64 = base64.b64encode(f.read()).decode()
-    
-    # Get current file SHA if exists (for update) or create new
-    r = requests.get(f'https://api.github.com/repos/{repo}/contents/{remote_path}', headers=h)
-    sha = r.json().get('sha') if r.status_code == 200 else None
-    
-    # Upload via GitHub Contents API
-    data = {'message': f'temp video {int(time.time())}', 'content': content_b64, 'branch': branch}
-    if sha:
-        data['sha'] = sha
-    
-    r2 = requests.put(f'https://api.github.com/repos/{repo}/contents/{remote_path}', headers=h, json=data)
-    if r2.status_code not in (200, 201):
-        raise Exception(f"GitHub upload failed ({r2.status_code}): {r2.text[:500]}")
-    
-    owner, name = repo.split('/')
-    video_url = f'https://raw.githubusercontent.com/{owner}/{name}/{branch}/{remote_path}'
-    return video_url, repo, token, remote_path, branch
+load_dotenv()
+
+TEMP_DIR = Path(tempfile.gettempdir()) / "ig_compress"
+TEMP_DIR.mkdir(parents=True, exist_ok=True)
 
 
-def delete_github_temp_file(repo, token, remote_path, branch='main'):
-    h = {'Authorization': f'Bearer {token}', 'Accept': 'application/vnd.github+json'}
-    r = requests.get(f'https://api.github.com/repos/{repo}/contents/{remote_path}', headers=h)
-    if r.status_code == 200:
-        sha = r.json()['sha']
-        requests.delete(f'https://api.github.com/repos/{repo}/contents/{remote_path}',
-                        headers=h, json={'message': 'cleanup temp video', 'sha': sha, 'branch': branch})
+def compress_video(video_path):
+    """Compress video to under 40MB for faster Instagram processing."""
+    inp = Path(video_path)
+    size_mb = inp.stat().st_size / (1024 * 1024)
+    print(f"[instagram] Original size: {size_mb:.1f} MB")
+    if size_mb < 40:
+        print("[instagram] Under 40MB, skipping compression")
+        return str(video_path)
+    out = TEMP_DIR / f"compressed_{inp.stem}.mp4"
+    cmd = ["ffmpeg", "-y", "-i", str(inp), "-c:v", "libx264", "-crf", "28",
+           "-preset", "fast", "-c:a", "aac", "-b:a", "96k", "-movflags", "+faststart", str(out)]
+    print("[instagram] Compressing video...")
+    result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
+    if result.returncode != 0 or not out.exists():
+        print(f"[instagram] Compression failed, using original")
+        return str(video_path)
+    comp_mb = out.stat().st_size / (1024 * 1024)
+    print(f"[instagram] Compressed: {size_mb:.1f}MB -> {comp_mb:.1f}MB")
+    return str(out)
+
+
+def upload_to_hosting(file_path):
+    """Try multiple free hosting services, return direct URL."""
+    services = [
+        ("tmpfiles.org", lambda f: _upload_tmpfiles(f)),
+        ("0x0.st", lambda f: _upload_0x0(f)),
+        ("catbox.moe", lambda f: _upload_catbox(f)),
+        ("uguu.se", lambda f: _upload_uguu(f)),
+    ]
+    last_err = None
+    for name, fn in services:
+        try:
+            print(f"[instagram] Uploading via {name}...")
+            url = fn(file_path)
+            print(f"[instagram] Hosted at {url}")
+            return url
+        except Exception as e:
+            print(f"[instagram] {name} failed: {e}")
+            last_err = e
+    raise Exception(f"All hosting services failed: {last_err}")
+
+
+def _upload_tmpfiles(file_path):
+    with open(file_path, 'rb') as f:
+        r = requests.post('https://tmpfiles.org/api/v1/upload', files={'file': ('v.mp4', f, 'video/mp4')}, timeout=(15, 120))
+    if r.status_code != 200: raise Exception(f"Status {r.status_code}")
+    d = r.json()
+    if d.get('status') != 'success': raise Exception(str(d))
+    return d['data']['url'].replace('tmpfiles.org/', 'tmpfiles.org/dl/')
+
+
+def _upload_0x0(file_path):
+    with open(file_path, 'rb') as f:
+        r = requests.post('https://0x0.st', files={'file': ('v.mp4', f, 'video/mp4')}, timeout=(15, 120))
+    if r.status_code != 200: raise Exception(f"Status {r.status_code}")
+    return r.text.strip()
+
+
+def _upload_catbox(file_path):
+    with open(file_path, 'rb') as f:
+        r = requests.post('https://catbox.moe/user/api.php', data={'reqtype': 'fileupload'},
+                          files={'fileToUpload': ('v.mp4', f, 'video/mp4')}, timeout=(15, 120))
+    if r.status_code != 200: raise Exception(f"Status {r.status_code}")
+    return r.text.strip()
+
+
+def _upload_uguu(file_path):
+    with open(file_path, 'rb') as f:
+        r = requests.post('https://uguu.se/upload', files={'files[]': ('v.mp4', f, 'video/mp4')}, timeout=(15, 120))
+    if r.status_code != 200: raise Exception(f"Status {r.status_code}")
+    d = r.json()
+    if not d.get('success'): raise Exception(str(d))
+    return d['files'][0]['url']
+
+
+def _discover_ig_account():
+    tokens = []
+    for key in ('INSTAGRAM_ACCESS_TOKEN', 'IG_ACCESS_TOKEN', 'FACEBOOK_ACCESS_TOKEN', 'FB_ACCESS_TOKEN'):
+        value = (os.getenv(key) or '').strip()
+        if value and value not in tokens:
+            tokens.append(value)
+    page_ids = []
+    for key in ('FACEBOOK_PAGE_ID', 'FB_PAGE_ID'):
+        value = (os.getenv(key) or '').strip()
+        if value and value not in page_ids:
+            page_ids.append(value)
+
+    def _from_payload(payload):
+        ig = (payload or {}).get('instagram_business_account') or {}
+        return ig.get('id'), ig.get('username')
+
+    for token in tokens:
+        for page_id in page_ids:
+            try:
+                r = requests.get(
+                    f'https://graph.facebook.com/v21.0/{page_id}',
+                    params={'fields': 'instagram_business_account{id,username}', 'access_token': token},
+                    timeout=(10, 30),
+                )
+                if r.status_code == 200:
+                    account_id, username = _from_payload(r.json())
+                    if account_id:
+                        print(f"[instagram] Resolved linked IG account: {username or account_id}")
+                        return account_id, token
+            except Exception as exc:
+                print(f"[instagram] Page {page_id} lookup failed: {exc}")
+        for endpoint, params in (
+            ('https://graph.facebook.com/v21.0/me', {'fields': 'instagram_business_account{id,username}'}),
+            ('https://graph.facebook.com/v21.0/me/accounts', {'fields': 'instagram_business_account{id,username}'}),
+            ('https://graph.instagram.com/v21.0/me', {'fields': 'id,username'}),
+        ):
+            try:
+                r = requests.get(endpoint, params={**params, 'access_token': token}, timeout=(10, 30))
+                if r.status_code != 200:
+                    continue
+                data = r.json()
+                if 'data' in data:
+                    for page in data.get('data') or []:
+                        account_id, username = _from_payload(page)
+                        if account_id:
+                            print(f"[instagram] Resolved linked IG account: {username or account_id}")
+                            return account_id, token
+                else:
+                    account_id, username = _from_payload(data)
+                    if not account_id and data.get('id'):
+                        account_id, username = data['id'], data.get('username')
+                    if account_id:
+                        print(f"[instagram] Resolved IG account: {username or account_id}")
+                        return account_id, token
+            except Exception as exc:
+                print(f"[instagram] Lookup {endpoint.split('/v21.0/')[-1]} failed: {exc}")
+    return None, None
 
 
 def upload_to_instagram(video_path, caption, is_story=False):
     media_type = 'STORIES' if is_story else 'REELS'
-    
     print("\n" + "=" * 60)
-    print(f"INSTAGRAM {media_type} UPLOAD STARTING")
+    print(f"INSTAGRAM {media_type} UPLOAD")
     print("=" * 60)
-    
-    access_token = os.getenv('INSTAGRAM_ACCESS_TOKEN') or os.getenv('FACEBOOK_ACCESS_TOKEN')
+
+    access_token = (os.getenv('INSTAGRAM_ACCESS_TOKEN') or os.getenv('IG_ACCESS_TOKEN')
+                    or os.getenv('FACEBOOK_ACCESS_TOKEN') or os.getenv('FB_ACCESS_TOKEN'))
     user_id = os.getenv('INSTAGRAM_ACCOUNT_ID') or os.getenv('IG_USER_ID')
-    
-    def mask(s): return f"{s[:10]}...{s[-4:]}" if s and len(s) > 10 else ("PLACEHOLDER" if s == "***" else "MISSING")
-    print(f"[instagram] User ID Provided: {user_id}")
-    print(f"[instagram] Access Token: {mask(access_token)}")
-
-    if not access_token:
-        print("[instagram] Skipping - no token")
-        return {'status': 'skipped', 'reason': 'Missing credentials', 'platform': 'instagram'}
-    
-    if access_token.startswith('EAAM'):
-        print("[instagram] EAAM token detected, resolving Instagram Business Account ID...")
-        try:
-            # /me returns the Page info for EAAM tokens
-            me_resp = requests.get(f"https://graph.facebook.com/me?fields=id,name&access_token={access_token}", timeout=10)
-            if me_resp.status_code == 200:
-                page_id = me_resp.json().get('id')
-                print(f"[instagram] Facebook Page ID: {page_id}")
-                # Fetch connected Instagram account
-                ig_resp = requests.get(f"https://graph.facebook.com/{page_id}?fields=instagram_business_account&access_token={access_token}", timeout=10)
-                if ig_resp.status_code == 200:
-                    ig_account = ig_resp.json().get('instagram_business_account')
-                    if ig_account:
-                        ig_id = ig_account.get('id')
-                        if ig_id != user_id:
-                            print(f"[instagram] Found IG Business Account: {ig_id} (was: {user_id})")
-                            user_id = ig_id
-                    else:
-                        print("[instagram] No Instagram Business Account connected to this Page")
-                else:
-                    print(f"[instagram] IG account fetch failed: {ig_resp.text[:200]}")
-            else:
-                print(f"[instagram] Page fetch failed: {me_resp.text[:200]}")
-        except Exception as e:
-            print(f"[instagram] IG ID fetch error: {e}")
-    elif access_token.startswith('IGAA'):
-        try:
-            me_resp = requests.get(f"https://graph.facebook.com/me?fields=id,username&access_token={access_token}", timeout=10)
-            if me_resp.status_code == 200:
-                detected_id = me_resp.json().get('id')
-                if detected_id and detected_id != user_id:
-                    print(f"[instagram] Using detected ID: {detected_id}")
-                    user_id = detected_id
-        except Exception as e:
-            print(f"[instagram] ID verify error: {e}")
-
+    if not access_token: raise ValueError("INSTAGRAM_ACCESS_TOKEN not set")
     if not user_id:
-        print("[instagram] Skipping - no user ID")
-        return {'status': 'skipped', 'reason': 'Missing credentials', 'platform': 'instagram'}
-    
-    print(f"[instagram] Credentials loaded")
-    
-    video_path_obj = Path(video_path)
-    if not video_path_obj.exists():
-        raise FileNotFoundError(f"Video not found: {video_path}")
-    
-    file_size_mb = video_path_obj.stat().st_size / (1024 * 1024)
-    print(f"[instagram] Video: {video_path} ({file_size_mb:.2f} MB)")
-    
-    caption_limited = caption[:2200] if len(caption) > 2200 else caption
-    print(f"[instagram] Caption: {len(caption_limited)} chars")
-    
-    try:
-        print(f"[instagram] Step 1: Uploading to GitHub raw content...")
-        video_url, repo, token, remote_path, branch = upload_video_to_github(video_path_obj)
-        print(f"[instagram] GitHub URL: {video_url}")
-        
-        print(f"[instagram] Step 2: Creating {media_type} container...")
-        
-        api_base = "https://graph.facebook.com/v21.0"
-        container_params = {
-            'media_type': media_type,
-            'video_url': video_url,
-            'access_token': access_token
-        }
-        
-        if not is_story:
-            container_params['share_to_feed'] = 'false'
-            container_params['caption'] = caption_limited
+        user_id, discovered_token = _discover_ig_account()
+        if discovered_token:
+            access_token = discovered_token
+    if not user_id:
+        raise ValueError("Unable to resolve Instagram account id (link IG to the Facebook page or set INSTAGRAM_ACCOUNT_ID)")
 
-        
-        container_resp = requests.post(f"{api_base}/{user_id}/media", params=container_params, timeout=60)
-        if container_resp.status_code != 200:
-            error_msg = container_resp.json().get('error', {}).get('message', 'Unknown')
-            raise Exception(f"Container creation failed: {error_msg}")
-        
-        container_id = container_resp.json().get('id')
-        print(f"[instagram] Container: {container_id}")
-        
-        print(f"[instagram] Step 3: Processing...")
-        max_wait = 180
-        waited = 0
-        
+    inp = Path(video_path)
+    if not inp.exists(): raise FileNotFoundError(f"Video not found: {video_path}")
+    print(f"[instagram] Video: {inp.name} ({inp.stat().st_size/1024/1024:.1f} MB)")
+    caption_limited = caption[:2200] if len(caption) > 2200 else caption
+
+    compressed = None
+    try:
+        # Step 0: Compress if needed
+        compressed = compress_video(video_path)
+        upload_path = compressed
+
+        # Step 1: Upload to temporary hosting
+        print("[instagram] Step 1: Uploading to temporary hosting...")
+        video_url = upload_to_hosting(upload_path)
+
+        # Step 2: Create container (use graph.facebook as primary)
+        print("[instagram] Step 2: Creating media container...")
+        container_url = f"https://graph.facebook.com/v21.0/{user_id}/media"
+        params = {'media_type': media_type, 'video_url': video_url, 'access_token': access_token}
+        if not is_story:
+            params['caption'] = caption_limited
+            params['share_to_feed'] = 'false'
+            offset = thumb_offset_ms(video_path)
+            params['thumb_offset'] = str(offset if offset is not None else 5000)
+            print(f"[instagram] Cover frame offset: {params['thumb_offset']}ms")
+        cont_resp = requests.post(container_url, params=params, timeout=60)
+        if cont_resp.status_code != 200:
+            print(f"[instagram] Facebook Graph failed, retrying Instagram API...")
+            print(f"[instagram] Error: {cont_resp.text[:300]}")
+            container_url = f"https://graph.instagram.com/v21.0/{user_id}/media"
+            cont_resp = requests.post(container_url, params=params, timeout=60)
+            if cont_resp.status_code != 200:
+                raise Exception(f"Container creation failed: {cont_resp.text[:300]}")
+        container_id = cont_resp.json().get('id')
+        print(f"[instagram] Container ID: {container_id}")
+
+        # Step 3: Wait for processing (up to 180s, then force publish)
+        print("[instagram] Step 3: Checking video processing status...")
+        max_wait = 180; waited = 0; poll_interval = 15
+        status_check_broken = False
+
         while waited < max_wait:
-            status_resp = requests.get(f"{api_base}/{container_id}", params={
-                'fields': 'status_code,status', 'access_token': access_token
-            }, timeout=30)
-            
-            status_data = status_resp.json()
-            status_code = status_data.get('status_code') or status_data.get('status', 'UNKNOWN')
-            
-            print(f"[instagram] Status: {status_code} (waited {waited}s)")
-            
-            if status_code == 'FINISHED':
-                print(f"[instagram] Processing complete!")
+            status_url = f"https://graph.facebook.com/v21.0/{container_id}"
+            status_params = {'fields': 'status_code', 'access_token': access_token}
+            try:
+                st_resp = requests.get(status_url, params=status_params, timeout=(10, 20))
+            except Exception:
+                st_resp = None
+            if not st_resp or st_resp.status_code != 200:
+                try:
+                    status_url = f"https://graph.instagram.com/v21.0/{container_id}"
+                    st_resp = requests.get(status_url, params=status_params, timeout=(10, 20))
+                except Exception:
+                    pass
+            st = st_resp.json() if st_resp else {}
+            sc = st.get('status_code', 'UNKNOWN')
+
+            # Handle auth errors (common for status endpoint)
+            if 'error' in st:
+                sub = st['error'].get('error_subcode', 0)
+                print(f"[instagram] Status check auth issue (subcode {sub})")
+                if not status_check_broken:
+                    print("[instagram] Status endpoint limited, will publish after delay")
+                    status_check_broken = True
+                waited += poll_interval
+                if waited >= 60:
+                    break
+                time.sleep(poll_interval)
+                continue
+
+            print(f"[instagram] Status: {sc} ({waited}s)")
+            if sc == 'FINISHED': break
+            if sc == 'ERROR': raise Exception(st.get('error_message', 'Processing failed'))
+            if sc == 'UNKNOWN' and waited >= 120:
+                print(f"[instagram] Still UNKNOWN after {waited}s, publishing anyway...")
                 break
-            elif status_code == 'ERROR':
-                error_msg = status_data.get('error_message', 'Video processing failed')
-                error_code = status_data.get('error_code', 'N/A')
-                print(f"[instagram] Error: {error_msg} (code: {error_code})")
-                print(f"[instagram] Full response: {status_data}")
-                delete_github_temp_file(repo, token, remote_path, branch)
-                raise Exception(f"{error_msg}")
-            
-            time.sleep(30)
-            waited += 30
-        
+            time.sleep(poll_interval); waited += poll_interval
+
         if waited >= max_wait:
-            delete_github_temp_file(repo, token, remote_path, branch)
-            raise Exception("Video processing timed out")
-        
+            print(f"[instagram] Max wait reached ({waited}s), attempting publish anyway...")
+
+        # Step 4: Publish with retries
+        print("[instagram] Step 4: Publishing...")
         time.sleep(5)
-        
-        print(f"[instagram] Step 4: Publishing...")
-        max_retries = 3
-        publish_resp = None
-        
-        for attempt in range(max_retries):
-            publish_resp = requests.post(f"{api_base}/{user_id}/media_publish", params={
-                'creation_id': container_id, 'access_token': access_token
-            }, timeout=60)
-            
-            if publish_resp.status_code == 200:
-                break
-            print(f"[instagram] Publish attempt {attempt+1} failed, retrying...")
+        pub_url = f"https://graph.facebook.com/v21.0/{user_id}/media_publish"
+        pub_params = {'creation_id': container_id, 'access_token': access_token}
+        pub_resp = None
+        for attempt in range(5):
+            pub_resp = requests.post(pub_url, params=pub_params, timeout=60)
+            if pub_resp.status_code == 200: break
+            err = pub_resp.json().get('error', {}).get('message', '') if pub_resp.text else ''
+            print(f"[instagram] Publish attempt {attempt+1}/5 failed: {err[:100]}")
             time.sleep(10)
-        
-        if not publish_resp or publish_resp.status_code != 200:
-            error_msg = publish_resp.json().get('error', {}).get('message', 'Unknown') if publish_resp else 'No response'
-            delete_github_temp_file(repo, token, remote_path, branch)
-            raise Exception(f"Publish failed: {error_msg}")
-        
-        media_id = publish_resp.json().get('id')
+            if attempt == 2:
+                pub_url = f"https://graph.instagram.com/v21.0/{user_id}/media_publish"
+        if not pub_resp or pub_resp.status_code != 200:
+            raise Exception(f"Publish failed: {pub_resp.text[:300] if pub_resp else 'No response'}")
+        media_id = pub_resp.json().get('id')
         print(f"[instagram] SUCCESS! Media ID: {media_id}")
-        
-        delete_github_temp_file(repo, token, remote_path, branch)
-        
         return {'id': media_id, 'platform': 'instagram', 'status': 'success'}
-        
     except Exception as e:
-        print(f"[instagram] Error: {e}")
+        print(f"[instagram] ERROR: {e}")
         raise
+    finally:
+        if compressed and compressed != video_path:
+            try: Path(compressed).unlink()
+            except Exception: pass
 
 
 if __name__ == '__main__':
-    video_file = Path('ielts_short.mp4')
+    video_file = Path('final_video.mp4')
     if video_file.exists():
-        try:
-            result = upload_to_instagram(str(video_file), "Test caption")
-            print(f"Result: {result}")
-        except Exception as e:
-            print(f"Failed: {e}")
-    else:
-        print(f"Video not found: {video_file}")
+        try: upload_to_instagram(str(video_file), "Test")
+        except Exception as e: print(f"Failed: {e}")

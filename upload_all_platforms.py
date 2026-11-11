@@ -1,303 +1,316 @@
-"""
-VELOCITY VIETNAMESE - Unified Social Media Upload Script
-Uploads generated reels to all connected social media platforms
-"""
+"""Publish the latest Velocity lesson to every connected platform."""
 
+from __future__ import annotations
+
+import argparse
+import json
 import os
 import sys
-import json
-from pathlib import Path
 from datetime import datetime
+from pathlib import Path
+
 from dotenv import load_dotenv
 
-load_dotenv()
+ROOT = Path(__file__).resolve().parent
+UPLOAD_DIR = ROOT / "upload"
+sys.path.insert(0, str(UPLOAD_DIR))
+sys.path.insert(0, str(ROOT))
 
-upload_dir = Path(__file__).parent / "upload"
-if upload_dir.exists() and str(upload_dir) not in sys.path:
-    sys.path.insert(0, str(upload_dir))
+if sys.platform == "win32":
+    sys.stdout.reconfigure(encoding="utf-8")
 
-upload_to_facebook = None
-upload_to_instagram = None
-upload_to_youtube = None
-upload_to_vk = None
-upload_to_telegram = None
-upload_to_twitter = None
-upload_to_threads = None
-upload_to_tiktok = None
+load_dotenv(ROOT / ".env")
 
-try:
-    from upload_facebook import upload_to_facebook as fb_upload
-    upload_to_facebook = fb_upload
-except ImportError as e:
-    print(f"[!] Facebook upload module not available: {e}")
+import config
 
-try:
-    from upload_instagram import upload_to_instagram as ig_upload
-    upload_to_instagram = ig_upload
-except ImportError as e:
-    print(f"[!] Instagram upload module not available: {e}")
+BRAND = config.BRAND
+HANDLE = config.HANDLE
+HASHTAGS = config.HASHTAGS
+LANG_NAME = config.LANGUAGE["name"]
 
-try:
-    from upload_to_youtube import upload_to_youtube as yt_upload
-    upload_to_youtube = yt_upload
-except ImportError as e:
-    print(f"[!] YouTube upload module not available: {e}")
+uploaders = {
+    "facebook": ("upload_facebook", "upload_to_facebook"),
+    "instagram": ("upload_instagram", "upload_to_instagram"),
+    "youtube": ("upload_to_youtube", "upload_to_youtube"),
+    "vk": ("upload_vk", "upload_to_vk"),
+    "telegram": ("upload_telegram", "upload_to_telegram"),
+    "twitter": ("upload_twitter", "upload_to_twitter"),
+    "threads": ("upload_threads", "upload_to_threads"),
+    "tiktok": ("upload_tiktok", "upload_to_tiktok"),
+}
 
-try:
-    from upload_vk import upload_to_vk as vk_upload
-    upload_to_vk = vk_upload
-except ImportError as e:
-    print(f"[!] VK upload module not available: {e}")
-
-try:
-    from upload_telegram import upload_to_telegram as tg_upload
-    upload_to_telegram = tg_upload
-except ImportError as e:
-    print(f"[!] Telegram upload module not available: {e}")
-
-try:
-    from upload_twitter import upload_to_twitter as tw_upload
-    upload_to_twitter = tw_upload
-except ImportError as e:
-    print(f"[!] Twitter upload module not available: {e}")
-
-try:
-    from upload_threads import upload_to_threads as th_upload
-    upload_to_threads = th_upload
-except ImportError as e:
-    print(f"[!] Threads upload module not available: {e}")
-
-try:
-    from upload_tiktok import upload_to_tiktok as tk_upload
-    upload_to_tiktok = tk_upload
-except ImportError as e:
-    print(f"[!] TikTok upload module not available: {e}")
+CREDS = {
+    "facebook": ["FACEBOOK_ACCESS_TOKEN", "FACEBOOK_PAGE_ID"],
+    "instagram": ["INSTAGRAM_ACCESS_TOKEN"],
+    "youtube": ["YT_CLIENT_ID", "YT_CLIENT_SECRET", "YT_REFRESH_TOKEN"],
+    "vk": ["VK_ACCESS_TOKEN", "VK_GROUP_ID"],
+    "telegram": ["TELEGRAM_BOT_TOKEN", "TELEGRAM_CHANNEL_ID"],
+    "twitter": ["TWITTER_API_KEY", "TWITTER_API_SECRET", "TWITTER_ACCESS_TOKEN", "TWITTER_ACCESS_SECRET"],
+    "threads": ["THREADS_ACCESS_TOKEN", "THREADS_USER_ID"],
+    "tiktok": ["TIKTOK_ACCESS_TOKEN"],
+}
 
 
-def get_latest_reel():
-    video_dir = Path("output/video")
-    if not video_dir.exists():
-        print("No output/video directory found")
+def _env(*names):
+    for name in names:
+        value = os.getenv(name, "").strip()
+        if value:
+            return value
+    return ""
+
+DISPLAY = {
+    "facebook": "Facebook", "instagram": "Instagram", "youtube": "YouTube", "vk": "VK",
+    "telegram": "Telegram", "twitter": "Twitter/X", "threads": "Threads", "tiktok": "TikTok",
+}
+
+
+def load_uploaders():
+    funcs = {}
+    for key, (module_name, func_name) in uploaders.items():
+        try:
+            module = __import__(module_name, fromlist=[func_name])
+            funcs[key] = getattr(module, func_name)
+        except Exception as exc:
+            print(f"[!] {DISPLAY[key]} uploader unavailable: {exc}")
+    return funcs
+
+
+def find_latest_lesson(lesson: str | None) -> Path | None:
+    if lesson:
+        path = Path(lesson)
+        if path.is_file():
+            path = path.parent
+        return path if (path / "final_reel.mp4").exists() else None
+    candidates = list((ROOT / "output" / "lessons").glob("*/final_reel.mp4"))
+    if not candidates:
         return None
-    reels = list(video_dir.glob("*/final_reel.mp4"))
-    if not reels:
-        print("No reels found in output/video directory")
-        return None
-    latest = max(reels, key=lambda p: p.stat().st_mtime)
-    metadata_file = latest.parent / "metadata.json"
-    metadata = {}
-    if metadata_file.exists():
-        with open(metadata_file, "r", encoding="utf-8") as f:
-            metadata = json.load(f)
+    return max(candidates, key=lambda p: p.stat().st_mtime).parent
+
+
+def load_lesson(folder: Path) -> dict:
+    meta = {}
+    meta_file = folder / "metadata.json"
+    if meta_file.exists():
+        meta = json.loads(meta_file.read_text(encoding="utf-8"))
     return {
-        "video_path": str(latest),
-        "metadata": metadata,
-        "category": metadata.get("category_english", "Vietnamese Learning"),
-        "phrases": metadata.get("phrases", [])
+        "folder": folder,
+        "video": folder / "final_reel.mp4",
+        "thumbnail": folder / "thumbnail.jpg",
+        "category": meta.get("category_english", LANG_NAME),
+        "category_native": meta.get("category_native", ""),
+        "phrases": meta.get("phrases", []),
+        "hashtags": meta.get("hashtags", HASHTAGS),
+        "meta": meta,
     }
 
 
-def generate_caption(phrases, category, platform="facebook"):
+def phrase_block(phrases: list, count: int) -> list[str]:
+    lines = []
+    for i, p in enumerate(phrases[:count], 1):
+        lines.append(f"{i}. {p.get('english', '')}")
+        lines.append(f"   {p.get('native', '')}")
+        if p.get("transliteration"):
+            lines.append(f"   [{p['transliteration']}]")
+        lines.append("")
+    return lines
+
+
+def long_caption(lesson: dict) -> str:
+    cat = lesson["category"]
+    lines = [
+        f"Learn {LANG_NAME} with {BRAND}!",
+        "",
+        f"Today's lesson: {cat}" + (f" · {lesson['category_native']}" if lesson["category_native"] else ""),
+        "",
+        "Repeat each phrase out loud. Then say it one more time, faster!",
+        "",
+    ]
+    lines += phrase_block(lesson["phrases"], 5)
+    lines += [
+        "Save this lesson and practice tomorrow.",
+        f"Follow {HANDLE} for a new {LANG_NAME} lesson every day.",
+        "",
+        " ".join(lesson["hashtags"]),
+    ]
+    return "\n".join(lines)
+
+
+def short_caption(lesson: dict) -> str:
+    p = lesson["phrases"]
+    pairs = [f"{x.get('english', '')} = {x.get('native', '')}" for x in p[:2]]
+    text = f"Learn {LANG_NAME}: {' | '.join(pairs)}"
+    tags = " " + " ".join(lesson["hashtags"][:2])
+    if len(text) + len(tags) > 278:
+        text = text[: 278 - len(tags) - 1].rstrip(" |") + "…"
+    return text + tags
+
+
+def threads_caption(lesson: dict) -> str:
+    lines = [f"{BRAND} · {lesson['category']}", ""]
+    for p in lesson["phrases"][:3]:
+        lines.append(f"{p.get('english', '')} → {p.get('native', '')}")
+    lines += ["", f"New lesson every day {HANDLE}", "", " ".join(lesson["hashtags"][:5])]
+    text = "\n".join(lines)
+    return text[:495]
+
+
+def missing_creds(platform: str) -> list[str]:
     if platform == "facebook":
-        caption_lines = [
-            f"Learn Vietnamese with VELOCITY VIETNAMESE!",
-            f"",
-            f"Category: {category}",
-            f"",
-            f"Master Vietnamese one phrase at a time! Today's {category} lesson:",
-            f""
-        ]
-        emojis = ["1", "2", "3", "4", "5"]
-        for i, phrase in enumerate(phrases[:5], 0):
-            emoji = emojis[i] if i < len(emojis) else f"{i+1}."
-            caption_lines.append(f"{emoji}. {phrase['english']}")
-            caption_lines.append(f"   {phrase.get('vietnamese', '')}")
-            caption_lines.append(f"   [{phrase.get('transliteration', '')}]")
-            caption_lines.append("")
-        caption_lines.extend([
-            f"Tip: Repeat each phrase out loud 3 times!",
-            f"Like this video if you learned something new!",
-            f"Comment your favorite phrase below!",
-            f"Follow for daily Vietnamese lessons!",
-            f"",
-        ])
-        hashtags = [
-            "#learnvietnamese", "#vietnameselessons", "#vietnameseforbeginners",
-            "#languagelearning", "#vietnamesevocabulary", "#velocityvietnamese",
-            "#dailyvietnamese", "#vietnamese", "#learnlanguages",
-            "#vietnameseteacher", "#speakvietnamese", "#vietnamesepractice",
-            "#bilingual", "#vietnamesewords", "#languagetips"
-        ]
-        caption_lines.extend(hashtags)
-    else:
-        caption_lines = [
-            f"Learn Vietnamese with VELOCITY VIETNAMESE!",
-            f"",
-            f"Category: {category}",
-            f"",
-            f"Today's phrases:",
-            f""
-        ]
-        for i, phrase in enumerate(phrases[:3], 1):
-            caption_lines.append(f"{i}. {phrase['english']}")
-            caption_lines.append(f"   -> {phrase.get('vietnamese', '')}")
-            caption_lines.append("")
-        hashtags = [
-            "#learnvietnamese", "#vietnameselessons", "#vietnameseforbeginners",
-            "#languagelearning", "#vietnamesevocabulary", "#velocityvietnamese",
-            "#dailyvietnamese", "#vietnamese", "#learnlanguages", "#vietnameseteacher"
-        ]
-        caption_lines.extend(hashtags)
-    return "\n".join(caption_lines)
+        token = _env("FACEBOOK_ACCESS_TOKEN", "FB_PAGE_ACCESS_TOKEN", "FB_ACCESS_TOKEN")
+        page = _env("FACEBOOK_PAGE_ID", "FB_PAGE_ID")
+        return [name for name, value in (("FACEBOOK_ACCESS_TOKEN", token), ("FACEBOOK_PAGE_ID", page)) if not value]
+    if platform == "instagram":
+        return [] if _env("INSTAGRAM_ACCESS_TOKEN", "IG_ACCESS_TOKEN") else ["INSTAGRAM_ACCESS_TOKEN"]
+    if platform == "youtube":
+        return [] if all(_env(a, b) for a, b in (
+            ("YT_CLIENT_ID", "YOUTUBE_CLIENT_ID"),
+            ("YT_CLIENT_SECRET", "YOUTUBE_CLIENT_SECRET"),
+            ("YT_REFRESH_TOKEN", "YOUTUBE_REFRESH_TOKEN"),
+        )) else ["YT_CLIENT_ID"]
+    if platform == "telegram":
+        return [name for name, value in (
+            ("TELEGRAM_BOT_TOKEN", _env("TELEGRAM_BOT_TOKEN")),
+            ("TELEGRAM_CHANNEL_ID", _env("TELEGRAM_CHANNEL_ID", "TELEGRAM_CHAT_ID", "CHAT_ID")),
+        ) if not value]
+    return [k for k in CREDS[platform] if not os.getenv(k, "").strip()]
 
 
-def upload_to_all_platforms(video_path, caption, category, phrases=None):
+def upload_to_all(lesson: dict, dry_run: bool = False) -> dict:
+    funcs = load_uploaders()
+    caption = long_caption(lesson)
     results = {
         "timestamp": datetime.now().isoformat(),
-        "category": category,
-        "video": video_path,
+        "video": str(lesson["video"]),
+        "category": lesson["category"],
+        "phrase_count": len(lesson["phrases"]),
+        "attempted": [],
+        "successful": [],
+        "skipped": [],
+        "failed": [],
         "uploads": {},
-        "platforms_attempted": [],
-        "platforms_successful": [],
-        "platforms_skipped": [],
-        "platforms_failed": []
+        "dry_run": dry_run,
     }
 
-    print("\n" + "=" * 80)
-    print("VELOCITY VIETNAMESE - MULTI-PLATFORM UPLOAD")
-    print("=" * 80)
-    print(f"Video: {video_path}")
-    print(f"Category: {category}")
-    print(f"Caption length: {len(caption)} characters")
-    print("=" * 80)
+    print("=" * 78)
+    print(f"{BRAND} — MULTI-PLATFORM UPLOAD")
+    print("=" * 78)
+    print(f"Video   : {lesson['video']}")
+    print(f"Category: {lesson['category']} ({len(lesson['phrases'])} phrases)")
+    print(f"Caption : {len(caption)} characters")
+    print("=" * 78)
 
-    if not Path(video_path).exists():
-        print(f"[ERROR] Video file not found: {video_path}")
-        return results
+    yt_title = yt_description = yt_tags = None
+    for platform in uploaders:
+        name = DISPLAY[platform]
+        print(f"\n{name} ...")
+        results["attempted"].append(platform)
 
-    platforms = [
-        ("facebook", upload_to_facebook, "Facebook"),
-        ("instagram", upload_to_instagram, "Instagram"),
-        ("youtube", upload_to_youtube, "YouTube"),
-        ("vk", upload_to_vk, "VK"),
-        ("telegram", upload_to_telegram, "Telegram"),
-        ("twitter", upload_to_twitter, "Twitter"),
-        ("threads", upload_to_threads, "Threads"),
-        ("tiktok", upload_to_tiktok, "TikTok"),
-    ]
+        missing = missing_creds(platform)
+        if missing:
+            results["skipped"].append(platform)
+            results["uploads"][platform] = {"status": "skipped", "missing": missing}
+            print(f"  skipped — missing: {', '.join(missing)}")
+            continue
+        if platform not in funcs:
+            results["skipped"].append(platform)
+            results["uploads"][platform] = {"status": "skipped", "reason": "module not available"}
+            print("  skipped — module not available")
+            continue
+        if dry_run:
+            results["skipped"].append(platform)
+            results["uploads"][platform] = {"status": "dry-run"}
+            print("  dry run — credentials present, upload not sent")
+            continue
 
-    for platform_name, upload_func, display_name in platforms:
-        print(f"\n{display_name} UPLOAD...")
-        results["platforms_attempted"].append(platform_name)
-
-        if upload_func:
-            try:
-                upload_result = None
-                if platform_name == "facebook":
-                    upload_result = upload_func(video_path=video_path, description=caption, title=f"Vietnamese: {category}")
-                elif platform_name == "instagram":
-                    upload_result = upload_func(video_path=video_path, caption=caption, is_story=False)
-                elif platform_name == "youtube":
-                    num_phrases = len(phrases) if phrases else 5
+        func = funcs[platform]
+        try:
+            result = None
+            if platform == "facebook":
+                result = func(video_path=str(lesson["video"]), description=caption,
+                              title=f"{LANG_NAME}: {lesson['category']}")
+            elif platform == "instagram":
+                result = func(video_path=str(lesson["video"]), caption=caption, is_story=False)
+            elif platform == "youtube":
+                if yt_title is None:
                     from upload_to_youtube import generate_video_metadata
-                    yt_title, yt_description, yt_tags = generate_video_metadata(category, num_phrases, phrases)
-                    upload_result = upload_func(video_path=video_path, title=yt_title, description=yt_description, tags=yt_tags, category_id='22')
-                elif platform_name == "vk":
-                    upload_result = upload_func(video_path=video_path, description=caption, title=f"Vietnamese: {category}")
-                elif platform_name == "telegram":
-                    upload_result = upload_func(video_path=video_path, caption=caption)
-                elif platform_name == "twitter":
-                    upload_result = upload_func(video_path=video_path, caption=caption)
-                elif platform_name == "threads":
-                    upload_result = upload_func(video_path=video_path, text=caption)
-                elif platform_name == "tiktok":
-                    upload_result = upload_func(video_path=video_path, description=caption)
+                    yt_title, yt_description, yt_tags = generate_video_metadata(
+                        lesson["category"], len(lesson["phrases"]), lesson["phrases"]
+                    )
+                result = func(video_path=str(lesson["video"]), title=yt_title,
+                              description=yt_description, tags=yt_tags, category_id="22")
+            elif platform == "vk":
+                result = func(video_path=str(lesson["video"]), description=caption,
+                              title=f"{LANG_NAME}: {lesson['category']}")
+            elif platform == "telegram":
+                result = func(video_path=str(lesson["video"]), caption=caption)
+            elif platform == "twitter":
+                result = func(video_path=str(lesson["video"]), caption=short_caption(lesson))
+            elif platform == "threads":
+                result = func(video_path=str(lesson["video"]), text=threads_caption(lesson))
+            elif platform == "tiktok":
+                result = func(video_path=str(lesson["video"]), description=caption)
 
-                if upload_result:
-                    results["uploads"][platform_name] = upload_result
-                    results["platforms_successful"].append(platform_name)
-                else:
-                    results["uploads"][platform_name] = {"status": "failed", "error": "Upload function returned None"}
-                    results["platforms_failed"].append(platform_name)
-            except Exception as e:
-                error_msg = str(e)
-                results["uploads"][platform_name] = {"status": "failed", "error": error_msg}
-                results["platforms_failed"].append(platform_name)
-                print(f"  Error: {error_msg}")
-        else:
-            results["uploads"][platform_name] = {"status": "skipped", "reason": "Module not available"}
-            results["platforms_skipped"].append(platform_name)
+            if result:
+                results["successful"].append(platform)
+                results["uploads"][platform] = result
+                print("  uploaded")
+            else:
+                results["failed"].append(platform)
+                results["uploads"][platform] = {"status": "failed", "error": "no result"}
+                print("  failed — uploader returned nothing")
+        except Exception as exc:
+            results["failed"].append(platform)
+            results["uploads"][platform] = {"status": "failed", "error": str(exc)}
+            print(f"  failed — {exc}")
 
-    print("\n" + "=" * 60)
-    print("UPLOAD STATUS REPORT")
-    print("=" * 60)
-    for pname, pkey in [("INSTAGRAM", "instagram"), ("FACEBOOK", "facebook"), ("YOUTUBE", "youtube"),
-                          ("THREADS", "threads"), ("TIKTOK", "tiktok")]:
-        pinfo = results["uploads"].get(pkey, {})
-        if pinfo and pinfo.get("status") == "success":
-            pid = pinfo.get("id", "N/A")
-            print(f"{pname}: SUCCESS (ID: {pid})")
-        elif pinfo and pinfo.get("status") == "skipped":
-            print(f"{pname}: SKIPPED")
-        elif pinfo:
-            err = str(pinfo.get("error", ""))[:80]
-            print(f"{pname}: FAILED - {err}")
-        else:
-            pl = pkey.lower()
-            failed = pl in [p.lower() for p in results.get("platforms_failed", [])]
-            skipped = pl in [p.lower() for p in results.get("platforms_skipped", [])]
-            print(f"{pname}: {'FAILED' if failed else ('SKIPPED' if skipped else '-')}")
-    print("=" * 60)
+    print("\n" + "=" * 78)
+    print("SUMMARY")
+    print("=" * 78)
+    print(f"  Successful: {len(results['successful'])}   Failed: {len(results['failed'])}   Skipped: {len(results['skipped'])}")
+    for platform in results["successful"]:
+        data = results["uploads"].get(platform, {})
+        vid = data.get("video_id") or data.get("id") or "ok"
+        print(f"  + {DISPLAY[platform]}: {vid}")
+    for platform in results["failed"]:
+        err = results["uploads"][platform].get("error", "unknown")
+        print(f"  x {DISPLAY[platform]}: {err[:110]}")
+    if results["skipped"]:
+        print(f"  - skipped: {', '.join(DISPLAY[p] for p in results['skipped'])}")
 
-    results_file = Path("output") / f"upload_results_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
-    results_file.parent.mkdir(exist_ok=True)
-    with open(results_file, "w", encoding="utf-8") as f:
-        json.dump(results, f, indent=2, ensure_ascii=False)
-
+    results_dir = ROOT / "output"
+    results_dir.mkdir(exist_ok=True)
+    out_file = results_dir / f"upload_results_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+    out_file.write_text(json.dumps(results, indent=2, ensure_ascii=False), encoding="utf-8")
+    print(f"\nResults: {out_file}")
     return results
 
 
 def main():
-    print("\n" + "=" * 80)
-    print("VELOCITY VIETNAMESE - AUTOMATED UPLOAD")
-    print("=" * 80)
+    parser = argparse.ArgumentParser(description="Upload the latest lesson to all platforms")
+    parser.add_argument("--lesson", help="lesson folder (default: newest in output/lessons)")
+    parser.add_argument("--dry-run", action="store_true", help="check credentials and captions without uploading")
+    parser.add_argument("--print-captions", action="store_true", help="print every caption variant and exit")
+    args = parser.parse_args()
 
-    reel = get_latest_reel()
-    if not reel:
-        print("\nNo reel found! Run facebook_reels_automation.py first.")
+    folder = find_latest_lesson(args.lesson)
+    if not folder:
+        print("No rendered lesson found. Run build.py first.")
         sys.exit(1)
+    lesson = load_lesson(folder)
 
-    print(f"\nFound latest reel:")
-    print(f"   Category: {reel['category']}")
-    print(f"   Video: {reel['video_path']}")
-    print(f"   Phrases: {len(reel['phrases'])}")
+    if args.print_captions:
+        print("\n--- LONG (Facebook / Instagram / TikTok / VK / Telegram) ---\n")
+        print(long_caption(lesson))
+        print("\n--- TWITTER/X ---\n")
+        print(short_caption(lesson))
+        print("\n--- THREADS ---\n")
+        print(threads_caption(lesson))
+        return
 
-    caption = generate_caption(reel['phrases'], reel['category'], platform="facebook")
-    print(f"\nGenerated caption ({len(caption)} chars):")
-    print("-" * 80)
-    print(caption[:500] + "..." if len(caption) > 500 else caption)
-    print("-" * 80)
-
-    results = upload_to_all_platforms(reel['video_path'], caption, reel['category'], reel['phrases'])
-    results["phrases"] = reel['phrases']
-
-    successful = len(results.get("platforms_successful", []))
-    failed = len(results.get("platforms_failed", []))
-    skipped = len(results.get("platforms_skipped", []))
-
-    if successful > 0:
-        print(f"\nUpload complete! {successful} platform(s) successful.")
-        if skipped > 0:
-            print(f"{skipped} platform(s) skipped - add credentials to enable them")
+    results = upload_to_all(lesson, dry_run=args.dry_run)
+    if results["successful"] or (args.dry_run and results["skipped"]):
         sys.exit(0)
-    elif failed > 0:
-        print(f"\nAll attempted uploads failed ({failed} failed, {skipped} skipped).")
-        print("Check the error messages above and verify your credentials")
-        sys.exit(1)
-    else:
-        print(f"\nAll uploads skipped ({skipped} skipped).")
-        print("Add credentials in GitHub Secrets to enable uploads")
-        sys.exit(1)
+    sys.exit(1)
 
 
 if __name__ == "__main__":
