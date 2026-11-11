@@ -7799,7 +7799,42 @@
       "korean": "덜 흘리고, 실수도 숨 쉬어요",
       "category": "Restaurant Korean",
       "generated_at": "2026-11-11T00:20:41.990445"
+    },
+    {
+      "english": "Wait, it will catch up.",
+      "korean": "기다려, 곧 따라올 거야.",
+      "transliteration": "gidallyeo, got tta-raol geoya",
+      "category": "Patience",
+      "generated_at": "2026-11-11T09:31:47.770133"
+    },
+    {
+      "english": "Slow down, your pace is fine.",
+      "korean": "천천히 해도 돼, 네 속도야.",
+      "transliteration": "cheoncheonhi haedo dwae, ne sogdo-ya",
+      "category": "Patience",
+      "generated_at": "2026-11-11T09:31:47.770147"
+    },
+    {
+      "english": "Take your time, don’t rush.",
+      "korean": "서두르지 마, 천천히 해.",
+      "transliteration": "seodu-ri ji ma, cheoncheonhi hae",
+      "category": "Patience",
+      "generated_at": "2026-11-11T09:31:47.770149"
+    },
+    {
+      "english": "Keep showing up, results follow.",
+      "korean": "계속 나와, 결과가 따라와.",
+      "transliteration": "gyesok na-wa, gyeolgwa-ga ttara-wa",
+      "category": "Patience",
+      "generated_at": "2026-11-11T09:31:47.770151"
+    },
+    {
+      "english": "Trust the process, one day at a time.",
+      "korean": "과정을 믿어, 하루하루로 가.",
+      "transliteration": "gwajeong-eul midae, haru haruro-ga",
+      "category": "Patience",
+      "generated_at": "2026-11-11T09:31:47.770153"
     }
   ],
-  "last_updated": "2026-11-11T00:20:41.990446"
+  "last_updated": "2026-11-11T09:31:47.770155"
 }
