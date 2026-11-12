@@ -7869,7 +7869,42 @@
       "transliteration": "igeo haenal su isseo, han georeumssik",
       "category": "Strength",
       "generated_at": "2026-11-11T21:03:41.443002"
+    },
+    {
+      "english": "Keep going, even slowly, you will arrive.",
+      "korean": "천천히 가더라도 계속 가요, 결국 도착해요.",
+      "transliteration": "cheoncheonhi gada-do gyesok gayo, gyeok-guk dojakaeyo",
+      "category": "Perseverance",
+      "generated_at": "2026-11-12T01:49:03.426137"
+    },
+    {
+      "english": "Again today, you can start over.",
+      "korean": "오늘도 다시 해요, 다시 시작해요.",
+      "transliteration": "oneul-do dasi haeyo, dasi sijak-haeyo",
+      "category": "Perseverance",
+      "generated_at": "2026-11-12T01:49:03.426153"
+    },
+    {
+      "english": "Take one small step, then another.",
+      "korean": "작은 한 걸음, 또 한 걸음.",
+      "transliteration": "jageun han georeum, tto han georeum",
+      "category": "Perseverance",
+      "generated_at": "2026-11-12T01:49:03.426156"
+    },
+    {
+      "english": "No matter what, keep your rhythm.",
+      "korean": "뭐가 있어도, 리듬만 놓치지 마요.",
+      "transliteration": "mwoga isseodo, rideum-man nochchiji-mayo",
+      "category": "Perseverance",
+      "generated_at": "2026-11-12T01:49:03.426158"
+    },
+    {
+      "english": "When it’s hard, rest, then continue.",
+      "korean": "힘들면 쉬었다가, 다시 계속해요.",
+      "transliteration": "himdeulmyeon swi-eotdaga, dasi gyesok-haeyo",
+      "category": "Perseverance",
+      "generated_at": "2026-11-12T01:49:03.426160"
     }
   ],
-  "last_updated": "2026-11-11T21:03:41.443004"
+  "last_updated": "2026-11-12T01:49:03.426163"
 }
