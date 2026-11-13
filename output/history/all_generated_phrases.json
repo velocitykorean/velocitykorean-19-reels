@@ -7974,7 +7974,42 @@
       "transliteration": "ginjangdo dwaenchanha, sijakhae.",
       "category": "Courage",
       "generated_at": "2026-11-13T00:49:10.955830"
+    },
+    {
+      "english": "I forgive, and I move on.",
+      "korean": "나는 용서하고, 계속 나아가요.",
+      "transliteration": "naneun yongseohago, gyesok na-aga-yo",
+      "category": "Forgiveness",
+      "generated_at": "2026-11-13T20:46:18.463958"
+    },
+    {
+      "english": "It’s okay, we can reset.",
+      "korean": "괜찮아요, 다시 시작할 수 있어요.",
+      "transliteration": "gwaenchanhayo, dasi sijakhal su isseoyo",
+      "category": "Forgiveness",
+      "generated_at": "2026-11-13T20:46:18.463971"
+    },
+    {
+      "english": "Let it be, I choose peace.",
+      "korean": "그대로 두고, 저는 평화를 선택해요.",
+      "transliteration": "geudaero dugi-go, jeoneun pyeonghwareul taektaehaeyo",
+      "category": "Forgiveness",
+      "generated_at": "2026-11-13T20:46:18.463973"
+    },
+    {
+      "english": "I release anger, slowly, gently.",
+      "korean": "저는 화를 놓아줘요, 천천히, 부드럽게.",
+      "transliteration": "jeoneun hwareul nosa-jwo-yo, cheoncheonhi, budeureopge",
+      "category": "Forgiveness",
+      "generated_at": "2026-11-13T20:46:18.463973"
+    },
+    {
+      "english": "You did your best, that’s enough.",
+      "korean": "너는 최선을 다했어, 그걸로 됐어.",
+      "transliteration": "neo-neun choeseon-eul dahaesseo, geugeolo dwaesseo",
+      "category": "Forgiveness",
+      "generated_at": "2026-11-13T20:46:18.463974"
     }
   ],
-  "last_updated": "2026-11-13T00:49:10.955832"
+  "last_updated": "2026-11-13T20:46:18.463976"
 }
