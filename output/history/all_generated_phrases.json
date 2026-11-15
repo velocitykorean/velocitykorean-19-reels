@@ -8079,7 +8079,42 @@
       "transliteration": "da-si mul-eo-bwa-yo, al su isseo-yo",
       "category": "Growth",
       "generated_at": "2026-11-14T23:46:47.320877"
+    },
+    {
+      "english": "Hold on, it will get better.",
+      "korean": "버텨요, 곧 나아질 거예요.",
+      "transliteration": "beoteoyo, got naajil geoyeyo",
+      "category": "Hope",
+      "generated_at": "2026-11-15T19:32:38.716114"
+    },
+    {
+      "english": "Keep going, even slowly.",
+      "korean": "천천히라도 계속 가요.",
+      "transliteration": "cheoncheonhirado gyesok gayo",
+      "category": "Hope",
+      "generated_at": "2026-11-15T19:32:38.716128"
+    },
+    {
+      "english": "Tomorrow is closer than you think.",
+      "korean": "내일은 생각보다 가까워요.",
+      "transliteration": "naeil-eun saenggakboda gakkaweoyo",
+      "category": "Hope",
+      "generated_at": "2026-11-15T19:32:38.716130"
+    },
+    {
+      "english": "You’re not alone in this.",
+      "korean": "여기 혼자만은 아니에요.",
+      "transliteration": "yeogi honjaman-eun anieyo",
+      "category": "Hope",
+      "generated_at": "2026-11-15T19:32:38.716132"
+    },
+    {
+      "english": "Breathe, and start again today.",
+      "korean": "숨 쉬고, 오늘 다시 시작해요.",
+      "transliteration": "sum swigo, oneul dasi sijakhaeyo",
+      "category": "Hope",
+      "generated_at": "2026-11-15T19:32:38.716133"
     }
   ],
-  "last_updated": "2026-11-14T23:46:47.320879"
+  "last_updated": "2026-11-15T19:32:38.716136"
 }
