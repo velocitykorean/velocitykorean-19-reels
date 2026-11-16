@@ -8149,7 +8149,42 @@
       "transliteration": "Oneul-ui eoryeoum, naeil-ui swium.",
       "category": "Motivation",
       "generated_at": "2026-11-15T23:52:44.898138"
+    },
+    {
+      "english": "I’m counting to ten, one by one.",
+      "korean": "열까지 하나씩 세고 있어요.",
+      "transliteration": "yeolkkaji hanakkii seego isseoyo",
+      "category": "Numbers",
+      "generated_at": "2026-11-16T23:11:43.840151"
+    },
+    {
+      "english": "Let’s do two, then start.",
+      "korean": "두 개로 먼저 해요, 그다음 시작해요.",
+      "transliteration": "du gaero meonje haeoyo, geudameun sijakhaeyo",
+      "category": "Numbers",
+      "generated_at": "2026-11-16T23:11:43.840165"
+    },
+    {
+      "english": "I only need three minutes, okay?",
+      "korean": "세 분만 있으면 돼요, 괜찮죠?",
+      "transliteration": "se bunman isseumyeon dwaeyo, gwaenchanjyo",
+      "category": "Numbers",
+      "generated_at": "2026-11-16T23:11:43.840171"
+    },
+    {
+      "english": "Give me four, please.",
+      "korean": "네 개 주세요, 부탁해요.",
+      "transliteration": "ne gae juseyo, butakhaeyo",
+      "category": "Numbers",
+      "generated_at": "2026-11-16T23:11:43.840174"
+    },
+    {
+      "english": "I have five tickets, not six.",
+      "korean": "표는 다섯 장이에요, 여섯 장 아니에요.",
+      "transliteration": "pyo-neo dasot jang-ieyo, yeoseot jang anieyo",
+      "category": "Numbers",
+      "generated_at": "2026-11-16T23:11:43.840176"
     }
   ],
-  "last_updated": "2026-11-15T23:52:44.898139"
+  "last_updated": "2026-11-16T23:11:43.840179"
 }
