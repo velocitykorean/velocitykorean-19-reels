@@ -8219,7 +8219,42 @@
       "transliteration": "bappado jinjeoreul seontaekhaeyo.",
       "category": "Wisdom",
       "generated_at": "2026-11-17T02:51:15.058569"
+    },
+    {
+      "english": "Hi! I'm happy to meet you.",
+      "korean": "안녕하세요, 만나서 반가워요.",
+      "transliteration": "annyeonghaseyo, mannasoseo bangawoyo",
+      "category": "Greetings",
+      "generated_at": "2026-11-17T22:01:21.491915"
+    },
+    {
+      "english": "Hello there, how are you doing?",
+      "korean": "안녕, 잘 지내고 있어?",
+      "transliteration": "annyeong, jal jinaego isseo",
+      "category": "Greetings",
+      "generated_at": "2026-11-17T22:01:21.491930"
+    },
+    {
+      "english": "Hey, welcome! Come on in.",
+      "korean": "어서 와요, 안으로 들어오세요.",
+      "transliteration": "eoseo wayo, anuro deureooseyo",
+      "category": "Greetings",
+      "generated_at": "2026-11-17T22:01:21.491932"
+    },
+    {
+      "english": "Good to see you again today.",
+      "korean": "오늘 또 봐서 반가워요.",
+      "transliteration": "oneul tto bwasoseo bangawoyo",
+      "category": "Greetings",
+      "generated_at": "2026-11-17T22:01:21.491933"
+    },
+    {
+      "english": "How’s your day going so far?",
+      "korean": "오늘은 어때, 지금은 어때요?",
+      "transliteration": "oneureun eottae, jigeumeun eottaeyo",
+      "category": "Greetings",
+      "generated_at": "2026-11-17T22:01:21.491934"
     }
   ],
-  "last_updated": "2026-11-17T02:51:15.058570"
+  "last_updated": "2026-11-17T22:01:21.491937"
 }
