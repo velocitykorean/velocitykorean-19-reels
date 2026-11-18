@@ -8254,7 +8254,42 @@
       "transliteration": "oneureun eottae, jigeumeun eottaeyo",
       "category": "Greetings",
       "generated_at": "2026-11-17T22:01:21.491934"
+    },
+    {
+      "english": "Take a deep breath, say it again.",
+      "korean": "숨 한번 크게 쉬고, 다시 말해요.",
+      "transliteration": "sum hanbeon keuge shigo, dasi malhaeyo",
+      "category": "Common Expressions",
+      "generated_at": "2026-11-18T03:13:40.952359"
+    },
+    {
+      "english": "No worries, you’ll figure it out.",
+      "korean": "괜찮아요, 곧 알게 될 거예요.",
+      "transliteration": "gwaenchana-yo, got alge doel geo-ye-yo",
+      "category": "Common Expressions",
+      "generated_at": "2026-11-18T03:13:40.952375"
+    },
+    {
+      "english": "I’m listening, tell me more.",
+      "korean": "듣고 있어요, 더 말해 주세요.",
+      "transliteration": "deutgo isseo-yo, deo malhae juseyo",
+      "category": "Common Expressions",
+      "generated_at": "2026-11-18T03:13:40.952376"
+    },
+    {
+      "english": "Slow down, it helps a lot.",
+      "korean": "천천히 해요, 많이 도움이 돼요.",
+      "transliteration": "cheoncheonhi haeyo, mani doumi doe-yo",
+      "category": "Common Expressions",
+      "generated_at": "2026-11-18T03:13:40.952377"
+    },
+    {
+      "english": "Let’s practice, just for today.",
+      "korean": "연습해요, 오늘만이라도요.",
+      "transliteration": "yeonseubhaeyo, oneulman-irado-yo",
+      "category": "Common Expressions",
+      "generated_at": "2026-11-18T03:13:40.952378"
     }
   ],
-  "last_updated": "2026-11-17T22:01:21.491937"
+  "last_updated": "2026-11-18T03:13:40.952382"
 }
