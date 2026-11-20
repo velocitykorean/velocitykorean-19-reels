@@ -8394,7 +8394,42 @@
       "transliteration": "il kkeutnago najung-e yaegi-hal su isseo?",
       "category": "Time",
       "generated_at": "2026-11-19T21:57:57.389121"
+    },
+    {
+      "english": "Hi, how are you today?",
+      "korean": "안녕하세요, 오늘 어때요?",
+      "transliteration": "annyeonghaseyo, oneul eottaeyo?",
+      "category": "Basic Phrases",
+      "generated_at": "2026-11-20T01:43:45.407641"
+    },
+    {
+      "english": "I'm learning Korean, please help.",
+      "korean": "저는 한국어를 배우고 있어요, 도와주세요.",
+      "transliteration": "jeoneun hangug-eoreul baeu-go isseoyo, dowa juseyo",
+      "category": "Basic Phrases",
+      "generated_at": "2026-11-20T01:43:45.407654"
+    },
+    {
+      "english": "What does this word mean?",
+      "korean": "이 단어는 무슨 뜻이에요?",
+      "transliteration": "i daneoneun museun tteusi-e-yo?",
+      "category": "Basic Phrases",
+      "generated_at": "2026-11-20T01:43:45.407656"
+    },
+    {
+      "english": "Can you say it again, please?",
+      "korean": "다시 한 번만 말해 주실래요?",
+      "transliteration": "dasi han beonman malhae jusil-laeyo?",
+      "category": "Basic Phrases",
+      "generated_at": "2026-11-20T01:43:45.407657"
+    },
+    {
+      "english": "Slowly, I can follow you.",
+      "korean": "천천히 해 주세요, 따라갈게요.",
+      "transliteration": "cheoncheonhi hae juseyo, ttagagalgeyo",
+      "category": "Basic Phrases",
+      "generated_at": "2026-11-20T01:43:45.407658"
     }
   ],
-  "last_updated": "2026-11-19T21:57:57.389122"
+  "last_updated": "2026-11-20T01:43:45.407659"
 }
