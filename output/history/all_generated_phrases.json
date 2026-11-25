@@ -8779,7 +8779,42 @@
       "transliteration": "O-neul no-ryeok-han ge ja-rang-seu-reo-wo-yo.",
       "category": "Happiness",
       "generated_at": "2026-11-25T03:27:38.922550"
+    },
+    {
+      "english": "Thank you, I feel lighter today.",
+      "korean": "고마워요, 오늘 마음이 가벼워요.",
+      "transliteration": "goma-wo-yo, oneul maeumi gabe-wo-yo",
+      "category": "Gratitude",
+      "generated_at": "2026-11-25T22:56:20.662821"
+    },
+    {
+      "english": "Thanks for listening, I needed that.",
+      "korean": "들어줘서 고마워요, 정말 필요했어요.",
+      "transliteration": "deul-eo-ju-seo goma-wo-yo, jeongmal pil-yoh-hae-sseo-yo",
+      "category": "Gratitude",
+      "generated_at": "2026-11-25T22:56:20.662834"
+    },
+    {
+      "english": "I appreciate you, more than you know.",
+      "korean": "진심으로 감사해요, 많이 몰랐죠.",
+      "transliteration": "jin-sim-euro gam-sa-hae-yo, mani mol-at-jyo",
+      "category": "Gratitude",
+      "generated_at": "2026-11-25T22:56:20.662836"
+    },
+    {
+      "english": "Your help made my day easier.",
+      "korean": "도와줘서 오늘이 훨씬 편했어요.",
+      "transliteration": "do-wa-jwo-seo oneu-li hwol-ssin pyeon-hae-sseo-yo",
+      "category": "Gratitude",
+      "generated_at": "2026-11-25T22:56:20.662837"
+    },
+    {
+      "english": "I’m grateful for this quiet moment.",
+      "korean": "이 조용한 순간이 고마워요.",
+      "transliteration": "i jo-yong-han sun-gan-i goma-wo-yo",
+      "category": "Gratitude",
+      "generated_at": "2026-11-25T22:56:20.662838"
     }
   ],
-  "last_updated": "2026-11-25T03:27:38.922552"
+  "last_updated": "2026-11-25T22:56:20.662840"
 }
