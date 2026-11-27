@@ -8905,7 +8905,28 @@
       "transliteration": "Myeongdong-e gago sipeoyo.",
       "category": "Travel",
       "generated_at": "2026-11-27T11:34:44.899372"
+    },
+    {
+      "english": "Hey, how’s it going today?",
+      "korean": "야, 오늘 어때?",
+      "transliteration": "Ya, oneul eottae?",
+      "category": "Friends",
+      "generated_at": "2026-11-27T19:17:16.800254"
+    },
+    {
+      "english": "I’m doing okay, thanks for asking.",
+      "korean": "나 괜찮아, 물어봐 줘서 고마워.",
+      "transliteration": "Na gwaenchanhae, mureobwa jwo seok gomaweo.",
+      "category": "Friends",
+      "generated_at": "2026-11-27T19:17:16.800269"
+    },
+    {
+      "english": "Let’s grab something to eat.",
+      "korean": "나중에 밥 먹으러 가자.",
+      "transliteration": "Najunge bapseuk meogeureo gaja.",
+      "category": "Friends",
+      "generated_at": "2026-11-27T19:17:16.800271"
     }
   ],
-  "last_updated": "2026-11-27T11:34:44.899374"
+  "last_updated": "2026-11-27T19:17:16.800273"
 }
