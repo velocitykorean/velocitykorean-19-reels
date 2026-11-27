@@ -2,9 +2,9 @@ name: Velocity Korean - Storybook Publish
 
 on:
   schedule:
-    - cron: '22:35 * * *'
-    - cron: '03:40 * * *'
-    - cron: '09:45 * * *'
+    - cron: '35 22 * * *'
+    - cron: '40 3 * * *'
+    - cron: '45 9 * * *'
   workflow_dispatch:
     inputs:
       category:
