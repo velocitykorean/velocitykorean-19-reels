@@ -8884,7 +8884,28 @@
       "transliteration": "Gwenchanhayo, jigeum sogo joayo.",
       "category": "Confidence",
       "generated_at": "2026-11-26T22:47:07.503425"
+    },
+    {
+      "english": "Hello, where is the subway station?",
+      "korean": "안녕하세요, 지하철역이 어디예요?",
+      "transliteration": "Annyeonghaseyo, jihacheol-yeok-i eodi-eyo?",
+      "category": "Travel",
+      "generated_at": "2026-11-27T11:34:44.899359"
+    },
+    {
+      "english": "How much is this ticket, please?",
+      "korean": "이 티켓 얼마예요?",
+      "transliteration": "I tikes eolma-ye-yo?",
+      "category": "Travel",
+      "generated_at": "2026-11-27T11:34:44.899370"
+    },
+    {
+      "english": "I’d like to go to Myeongdong.",
+      "korean": "명동에 가고 싶어요.",
+      "transliteration": "Myeongdong-e gago sipeoyo.",
+      "category": "Travel",
+      "generated_at": "2026-11-27T11:34:44.899372"
     }
   ],
-  "last_updated": "2026-11-26T22:47:07.503427"
+  "last_updated": "2026-11-27T11:34:44.899374"
 }
