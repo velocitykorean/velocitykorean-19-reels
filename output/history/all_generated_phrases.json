@@ -8926,7 +8926,28 @@
       "transliteration": "Najunge bapseuk meogeureo gaja.",
       "category": "Friends",
       "generated_at": "2026-11-27T19:17:16.800271"
+    },
+    {
+      "english": "I want something warm to eat.",
+      "korean": "따뜻한 거 먹고 싶어요.",
+      "transliteration": "Ttatteutan ge meokgo sipeoyo",
+      "category": "Food",
+      "generated_at": "2026-11-28T12:23:04.878330"
+    },
+    {
+      "english": "Do you have spicy ramen today?",
+      "korean": "오늘 매운 라면 있어요?",
+      "transliteration": "Oneul maeun ramyeon isseoyo",
+      "category": "Food",
+      "generated_at": "2026-11-28T12:23:04.878343"
+    },
+    {
+      "english": "This kimchi is really refreshing.",
+      "korean": "이 김치 진짜 맛있어요, 상큼해요.",
+      "transliteration": "I gimchi jinjja masisseoyo, sangkkeumhaeyo",
+      "category": "Food",
+      "generated_at": "2026-11-28T12:23:04.878346"
     }
   ],
-  "last_updated": "2026-11-27T19:17:16.800273"
+  "last_updated": "2026-11-28T12:23:04.878347"
 }
