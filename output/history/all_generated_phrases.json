@@ -8947,7 +8947,28 @@
       "transliteration": "I gimchi jinjja masisseoyo, sangkkeumhaeyo",
       "category": "Food",
       "generated_at": "2026-11-28T12:23:04.878346"
+    },
+    {
+      "english": "Hi, do you have rooms available tonight?",
+      "korean": "안녕하세요, 오늘 밤 방 있어요?",
+      "transliteration": "Annyeonghaseyo, oneul bam bang isseoyo?",
+      "category": "Hotel",
+      "generated_at": "2026-11-28T17:50:49.798184"
+    },
+    {
+      "english": "I’d like to check in, please.",
+      "korean": "체크인하고 싶어요, 부탁드려요.",
+      "transliteration": "Chekeu-inhago sipeoyo, butakdeoryeo",
+      "category": "Hotel",
+      "generated_at": "2026-11-28T17:50:49.798201"
+    },
+    {
+      "english": "What time is breakfast served?",
+      "korean": "아침 식사는 몇 시에 해요?",
+      "transliteration": "Achim siksa-neun myeot sie haeyo?",
+      "category": "Hotel",
+      "generated_at": "2026-11-28T17:50:49.798202"
     }
   ],
-  "last_updated": "2026-11-28T12:23:04.878347"
+  "last_updated": "2026-11-28T17:50:49.798204"
 }
